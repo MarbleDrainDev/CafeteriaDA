@@ -15,32 +15,6 @@ This project demonstrates a simple login system with role-based views using Reac
 2. Install dependencies: `npm install`
 3. Run the development server: `npm run dev`
 
-## Project Structure
-
-```
-software/
-├── .gitignore
-├── package.json
-├── public/
-│   ├── index.html
-│   ├── favicon.ico
-│   ├── logo192.png
-│   └── manifest.json
-├── README.md
-└── src/
-    ├── assets/
-    │   └── styles/
-    │       └── header.css
-    ├── pages/
-    │   ├── LoginPage.tsx
-    │   ├── AdminView.tsx
-    │   ├── CajeroView.tsx
-    │   └── MeseroView.tsx
-    ├── App.tsx
-    ├── index.css
-    └── main.tsx
-```
-
 ## Usage
 
 1. Enter one of the following usernames to log in:
