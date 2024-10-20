@@ -187,5 +187,5 @@ SELECT * FROM Mesas;
 SELECT * FROM facturas;
 ```
 
-[!CAUTION]
-Cambia la Ip que establece la conexion con los endpoints para la conexion con la base de datos
+> [!CAUTION]
+> Advises about risks or negative outcomes of certain actions.
