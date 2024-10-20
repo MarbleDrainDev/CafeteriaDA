@@ -1,16 +1,38 @@
 import React, { useState } from 'react';
 
 interface LoginPageProps {
-  onLogin: (username: string) => void;
+  onLoginSuccess: (token: string, rol: number, sedeId: number) => void;
 }
 
-const LoginPage: React.FC<LoginPageProps> = ({ onLogin }) => {
-  const [username, setUsername] = useState('');
+const LoginPage: React.FC<LoginPageProps> = ({ onLoginSuccess }) => {
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [error, setError] = useState('');
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    onLogin(username);
+    try {
+      const response = await fetch('https://192.168.1.2:7096/api/Login/login', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ email, password }),
+      });
+  
+      if (!response.ok) {
+        const errorData = await response.json();
+        throw new Error(errorData.message || 'Credenciales inválidas');
+      }
+  
+      const data = await response.json();
+      onLoginSuccess(data.token, data.rol, data.sedeId);  // Agregar sedeId en la llamada
+    } catch (err: any) {
+      setError(err.message);
+    }
   };
+  
+
 
   return (
     <div className="min-h-screen bg-gray-100 flex items-center justify-center">
@@ -18,13 +40,22 @@ const LoginPage: React.FC<LoginPageProps> = ({ onLogin }) => {
         <h1 className="text-2xl font-bold mb-4">Login</h1>
         <form onSubmit={handleSubmit}>
           <input
-            type="text"
-            value={username}
-            onChange={(e) => setUsername(e.target.value)}
-            placeholder="Enter your name"
+            type="email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            placeholder="Enter your email"
             className="w-full p-2 border rounded mb-4"
             required
           />
+          <input
+            type="password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+            placeholder="Enter your password"
+            className="w-full p-2 border rounded mb-4"
+            required
+          />
+          {error && <div className="text-red-500 mb-4">{error}</div>}
           <button
             type="submit"
             className="w-full bg-blue-500 text-white p-2 rounded hover:bg-blue-600"
