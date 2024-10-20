@@ -187,5 +187,5 @@ SELECT * FROM Mesas;
 SELECT * FROM facturas;
 ```
 
-**⚠️ Advertencia:**
+[!CAUTION]
 Cambia la Ip que establece la conexion con los endpoints para la conexion con la base de datos
