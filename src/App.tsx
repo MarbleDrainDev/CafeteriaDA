@@ -7,6 +7,8 @@
   import ProductList from './pages/ProductList';
   import MeseroProductList from './pages/MeseroProductList'; 
   import MesasView from './pages/MesasView';
+  import RolesView from './pages/RolesView';
+  import SedesView from './pages/SedesView';
 
   function App() {
     const [user, setUser] = useState<{ username: string; rol: number, sedeId?: number } | null>(null); // Agregar sedeId
@@ -23,10 +25,6 @@
         alert('Acceso no autorizado o Usuario incorrecto');
       }
     };
-    
-    
-    
-
     const handleLogout = () => {
       setUser(null);
     };
@@ -39,7 +37,12 @@
           ) : (
             <>
               {user.rol === 1 && ( // Admin
-                <Route path="/" element={<AdminView onLogout={handleLogout} />} />
+                // <Route path="/" element={<AdminView onLogout={handleLogout} />} />
+                <>
+                  <Route path="/" element={<AdminView onLogout={handleLogout} />} />
+                  <Route path="/admin/roles" element={<RolesView sedeId={user.sedeId!} />} /> 
+                  <Route path="/admin/sedes" element={<SedesView sedeId={user.sedeId!} />} /> 
+                </>
               )}
               {user.rol === 2 && (
                   <>
@@ -53,6 +56,8 @@
               )}
               <Route path="/productos" element={<ProductList />} />
               <Route path="/mesas" element={<MesasView sedeId={user.sedeId!} />} /> {/* Pasar sedeId */}
+              <Route path="/roles" element={<RolesView sedeId={user.sedeId!} />} /> {/* Pasar sedeId */}
+              <Route path="/sedes" element={<SedesView sedeId={user.sedeId!} />} /> {/* Pasar sedeId */}
             </>
           )}
         </Routes>

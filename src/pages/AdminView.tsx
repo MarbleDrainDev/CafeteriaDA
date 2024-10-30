@@ -50,11 +50,15 @@ const AdminView: React.FC<AdminViewProps> = ({ onLogout }) => {
               <img src="/src/assets/images/newspaper.svg" alt="NewsPaper" className='w-8 h-8 mb-2' />
               Noticias
             </button>
-            <button className="text-white flex flex-col items-center mb-6 hover:text-gray-300 hover:scale-105 transition-transform duration-200">
+            <button 
+              className="text-white flex flex-col items-center mb-6 hover:text-gray-300 hover:scale-105 transition-transform duration-200"
+              onClick={() => navigate('/admin/roles')}>
               <img src="/src/assets/images/roles.svg" alt="Roles" className="w-8 h-8 mb-2" />
               Gestión de Roles
             </button>
-            <button className="text-white flex flex-col items-center mb-6 hover:text-gray-300 hover:scale-105 transition-transform duration-200">
+            <button 
+              className="text-white flex flex-col items-center mb-6 hover:text-gray-300 hover:scale-105 transition-transform duration-200"
+              onClick={() => navigate('/admin/sedes')}>
               <img src="/src/assets/images/sedes.svg" alt="Sedes" className="w-8 h-8 mb-2" />
               Gestión por Sedes
             </button>
