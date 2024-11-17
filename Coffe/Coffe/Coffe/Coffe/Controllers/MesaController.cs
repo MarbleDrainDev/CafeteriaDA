@@ -632,8 +632,6 @@ namespace Cafeteria.Controllers
                 return StatusCode(500, $"Error interno del servidor: {ex.Message}");
             }
         }
-
-
         [HttpPut("{id}/estado")]
         public IActionResult ActualizarEstadoMesa(int id, [FromBody] EstadoMesa estadoDto)
         {
@@ -664,8 +662,5 @@ namespace Cafeteria.Controllers
                 return StatusCode(500, $"Error interno del servidor: {ex.Message}");
             }
         }
-
-
-
     }
 }

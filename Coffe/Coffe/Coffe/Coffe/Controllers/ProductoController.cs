@@ -14,7 +14,6 @@ namespace Cafeteria.Controllers
         [HttpGet]
         public IActionResult GetProduct()
         {
-
             try
             {
                 List<Producto> productos = new List<Producto>();

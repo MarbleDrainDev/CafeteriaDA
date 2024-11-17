@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "d1yZYCCvmJ4=",
+  "dgSpecHash": "GkGRTzRciMk=",
   "success": true,
-  "projectFilePath": "C:\\Users\\Trabajo\\Downloads\\sb1-duwxjw\\Nuevoo\\sb1-duwxjw\\Coffe\\Coffe\\Coffe\\Coffe\\Coffe.csproj",
+  "projectFilePath": "C:\\Users\\Trabajo\\Desktop\\Todo\\UNI\\CafeDA\\Nuevoo\\sb1-duwxjw\\Coffe\\Coffe\\Coffe\\Coffe\\Coffe.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Trabajo\\.nuget\\packages\\bcrypt.net-next\\4.0.3\\bcrypt.net-next.4.0.3.nupkg.sha512",
     "C:\\Users\\Trabajo\\.nuget\\packages\\bouncycastle.cryptography\\2.3.1\\bouncycastle.cryptography.2.3.1.nupkg.sha512",

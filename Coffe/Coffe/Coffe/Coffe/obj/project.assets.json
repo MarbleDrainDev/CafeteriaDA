@@ -2343,11 +2343,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Trabajo\\Downloads\\sb1-duwxjw\\Nuevoo\\sb1-duwxjw\\Coffe\\Coffe\\Coffe\\Coffe\\Coffe.csproj",
+      "projectUniqueName": "C:\\Users\\Trabajo\\Desktop\\Todo\\UNI\\CafeDA\\Nuevoo\\sb1-duwxjw\\Coffe\\Coffe\\Coffe\\Coffe\\Coffe.csproj",
       "projectName": "Coffe",
-      "projectPath": "C:\\Users\\Trabajo\\Downloads\\sb1-duwxjw\\Nuevoo\\sb1-duwxjw\\Coffe\\Coffe\\Coffe\\Coffe\\Coffe.csproj",
+      "projectPath": "C:\\Users\\Trabajo\\Desktop\\Todo\\UNI\\CafeDA\\Nuevoo\\sb1-duwxjw\\Coffe\\Coffe\\Coffe\\Coffe\\Coffe.csproj",
       "packagesPath": "C:\\Users\\Trabajo\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Trabajo\\Downloads\\sb1-duwxjw\\Nuevoo\\sb1-duwxjw\\Coffe\\Coffe\\Coffe\\Coffe\\obj\\",
+      "outputPath": "C:\\Users\\Trabajo\\Desktop\\Todo\\UNI\\CafeDA\\Nuevoo\\sb1-duwxjw\\Coffe\\Coffe\\Coffe\\Coffe\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\Trabajo\\AppData\\Roaming\\NuGet\\NuGet.Config",

@@ -222,3 +222,13 @@ C:\Users\Trabajo\Downloads\sb1-duwxjw\Nuevoo\sb1-duwxjw\Coffe\Coffe\Coffe\Coffe\
 C:\Users\Trabajo\Downloads\sb1-duwxjw\Nuevoo\sb1-duwxjw\Coffe\Coffe\Coffe\Coffe\obj\Debug\net8.0\Coffe.pdb
 C:\Users\Trabajo\Downloads\sb1-duwxjw\Nuevoo\sb1-duwxjw\Coffe\Coffe\Coffe\Coffe\obj\Debug\net8.0\Coffe.genruntimeconfig.cache
 C:\Users\Trabajo\Downloads\sb1-duwxjw\Nuevoo\sb1-duwxjw\Coffe\Coffe\Coffe\Coffe\obj\Debug\net8.0\ref\Coffe.dll
+C:\Users\Trabajo\Desktop\Todo\UNI\CafeDA\Nuevoo\sb1-duwxjw\Coffe\Coffe\Coffe\Coffe\obj\Debug\net8.0\Coffe.csproj.AssemblyReference.cache
+C:\Users\Trabajo\Desktop\Todo\UNI\CafeDA\Nuevoo\sb1-duwxjw\Coffe\Coffe\Coffe\Coffe\obj\Debug\net8.0\Coffe.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Trabajo\Desktop\Todo\UNI\CafeDA\Nuevoo\sb1-duwxjw\Coffe\Coffe\Coffe\Coffe\obj\Debug\net8.0\Coffe.AssemblyInfoInputs.cache
+C:\Users\Trabajo\Desktop\Todo\UNI\CafeDA\Nuevoo\sb1-duwxjw\Coffe\Coffe\Coffe\Coffe\obj\Debug\net8.0\Coffe.AssemblyInfo.cs
+C:\Users\Trabajo\Desktop\Todo\UNI\CafeDA\Nuevoo\sb1-duwxjw\Coffe\Coffe\Coffe\Coffe\obj\Debug\net8.0\Coffe.csproj.CoreCompileInputs.cache
+C:\Users\Trabajo\Desktop\Todo\UNI\CafeDA\Nuevoo\sb1-duwxjw\Coffe\Coffe\Coffe\Coffe\obj\Debug\net8.0\Coffe.MvcApplicationPartsAssemblyInfo.cs
+C:\Users\Trabajo\Desktop\Todo\UNI\CafeDA\Nuevoo\sb1-duwxjw\Coffe\Coffe\Coffe\Coffe\obj\Debug\net8.0\Coffe.MvcApplicationPartsAssemblyInfo.cache
+C:\Users\Trabajo\Desktop\Todo\UNI\CafeDA\Nuevoo\sb1-duwxjw\Coffe\Coffe\Coffe\Coffe\obj\Debug\net8.0\Coffe.dll
+C:\Users\Trabajo\Desktop\Todo\UNI\CafeDA\Nuevoo\sb1-duwxjw\Coffe\Coffe\Coffe\Coffe\obj\Debug\net8.0\refint\Coffe.dll
+C:\Users\Trabajo\Desktop\Todo\UNI\CafeDA\Nuevoo\sb1-duwxjw\Coffe\Coffe\Coffe\Coffe\obj\Debug\net8.0\Coffe.pdb

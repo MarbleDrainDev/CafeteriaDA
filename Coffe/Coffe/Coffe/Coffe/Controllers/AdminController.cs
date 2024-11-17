@@ -45,7 +45,7 @@ namespace Coffe.Controllers
             }
             catch (Exception ex)
             {
-                return StatusCode(500, new { message = "Error interno del servidor: " + ex.Message });
+                return StatusCode(500, new { message = "Error interno del servidor: " + ex.Messa/ge });
             }
         }
 
