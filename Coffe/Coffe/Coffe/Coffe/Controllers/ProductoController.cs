@@ -35,7 +35,6 @@ namespace Cafeteria.Controllers
                                     Stock = reader.GetInt32("Stock"),
                                     Descripcion = reader.GetString("Descripcion"),
                                     Precio = reader.GetDecimal("Precio")
-                                    // Agrega aquí otras propiedades según tu esquema de base de datos
                                 });
                             }
                         }

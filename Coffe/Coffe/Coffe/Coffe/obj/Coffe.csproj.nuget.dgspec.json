@@ -1,20 +1,24 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Trabajo\\Desktop\\Todo\\UNI\\CafeDA\\Nuevoo\\sb1-duwxjw\\Coffe\\Coffe\\Coffe\\Coffe\\Coffe.csproj": {}
+    "C:\\Users\\jeyso\\OneDrive\\Documentos\\CafeteriaDA\\Coffe\\Coffe\\Coffe\\Coffe\\Coffe.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Trabajo\\Desktop\\Todo\\UNI\\CafeDA\\Nuevoo\\sb1-duwxjw\\Coffe\\Coffe\\Coffe\\Coffe\\Coffe.csproj": {
+    "C:\\Users\\jeyso\\OneDrive\\Documentos\\CafeteriaDA\\Coffe\\Coffe\\Coffe\\Coffe\\Coffe.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Trabajo\\Desktop\\Todo\\UNI\\CafeDA\\Nuevoo\\sb1-duwxjw\\Coffe\\Coffe\\Coffe\\Coffe\\Coffe.csproj",
+        "projectUniqueName": "C:\\Users\\jeyso\\OneDrive\\Documentos\\CafeteriaDA\\Coffe\\Coffe\\Coffe\\Coffe\\Coffe.csproj",
         "projectName": "Coffe",
-        "projectPath": "C:\\Users\\Trabajo\\Desktop\\Todo\\UNI\\CafeDA\\Nuevoo\\sb1-duwxjw\\Coffe\\Coffe\\Coffe\\Coffe\\Coffe.csproj",
-        "packagesPath": "C:\\Users\\Trabajo\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Trabajo\\Desktop\\Todo\\UNI\\CafeDA\\Nuevoo\\sb1-duwxjw\\Coffe\\Coffe\\Coffe\\Coffe\\obj\\",
+        "projectPath": "C:\\Users\\jeyso\\OneDrive\\Documentos\\CafeteriaDA\\Coffe\\Coffe\\Coffe\\Coffe\\Coffe.csproj",
+        "packagesPath": "C:\\Users\\jeyso\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\jeyso\\OneDrive\\Documentos\\CafeteriaDA\\Coffe\\Coffe\\Coffe\\Coffe\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
         "configFilePaths": [
-          "C:\\Users\\Trabajo\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\jeyso\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [

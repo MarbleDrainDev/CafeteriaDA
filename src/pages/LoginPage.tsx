@@ -12,7 +12,7 @@ const LoginPage: React.FC<LoginPageProps> = ({ onLoginSuccess }) => {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     try {
-      const response = await fetch('https://192.168.1.2:7096/api/Login/login', {
+      const response = await fetch('https://192.168.0.5:7096/api/Login/login', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
