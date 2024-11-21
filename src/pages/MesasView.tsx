@@ -39,7 +39,7 @@ const MesasView = () => {
     const meseroId = parseInt(localStorage.getItem("meseroId") || "0", 10); // Convertir a número y verificar si es válido
     useEffect(() => {
         const connection = new signalR.HubConnectionBuilder()
-            .withUrl("https://localhost:7096/mesahub")
+            .withUrl("https://192.168.0.6:7096/mesahub")
             .build();
 
         connection.on("mesasActualizadas", (nuevasMesas: Mesa[]) => {
@@ -65,7 +65,7 @@ const MesasView = () => {
     }, [sedeId]);
     const fetchMesas = async () => {
         try {
-            const response = await axios.get(`https://localhost:7096/api/Mesa?sedeId=${sedeId}`);
+            const response = await axios.get(`https://192.168.0.6:7096/api/Mesa?sedeId=${sedeId}`);
             setMesas(response.data);
         } catch (error) {
             console.error("Error al obtener las mesas", error);
@@ -73,7 +73,7 @@ const MesasView = () => {
     };
     const fetchProductos = async () => {
         try {
-            const response = await axios.get(`https://localhost:7096/api/Producto/sede/${sedeId}`);
+            const response = await axios.get(`https://192.168.0.6:7096/api/Producto/sede/${sedeId}`);
             setProductos(response.data);
         } catch (error) {
             console.error("Error al obtener los productos", error);
@@ -81,7 +81,7 @@ const MesasView = () => {
     };
     const fetchPedidoMesa = async (mesaId: number) => {
         try {
-            const response = await axios.get(`https://localhost:7096/api/Mesa/${mesaId}/pedido`);
+            const response = await axios.get(`https://192.168.0.6:7096/api/Mesa/${mesaId}/pedido`);
             const { pedido, detalles } = response.data; 
             const pedidoCompleto = { ...pedido, detalles };
             setPedidoActual(pedidoCompleto);
@@ -153,7 +153,7 @@ const MesasView = () => {
             try {
                 if (pedidoActual.id) {
                     // Update existing order
-                    await axios.put(`https://localhost:7096/api/mesa/${selectedMesaId}/actualizar`, {
+                    await axios.put(`https://192.168.0.6:7096/api/mesa/${selectedMesaId}/actualizar`, {
                         IdMesero: pedidoActual.id_mesero,
                         IdCajero: pedidoActual.id_cajero,
                         Detalles: pedidoActual.detalles.map(detalle => ({
@@ -165,7 +165,7 @@ const MesasView = () => {
                     alert("Pedido actualizado exitosamente");
                 } else {
                     // Create new order
-                    await axios.post('https://localhost:7096/api/mesa/pedido', {
+                    await axios.post('https://192.168.0.6:7096/api/mesa/pedido', {
                         IdMesero: pedidoActual.id_mesero,
                         IdCajero: pedidoActual.id_cajero,
                         IdMesa: pedidoActual.id_mesa,
@@ -193,7 +193,7 @@ const MesasView = () => {
         console.log(`Intentando eliminar el producto con ID: ${idProducto} del pedido con ID: ${idPedido}`);
         try {
             // Realiza la solicitud DELETE al endpoint correspondiente
-            await axios.delete(`https://localhost:7096/api/mesa/${idPedido}/detalle/${idProducto}`);    
+            await axios.delete(`https://192.168.0.6:7096/api/mesa/${idPedido}/detalle/${idProducto}`);    
             // Actualiza el pedido después de eliminar el producto
             if (pedidoActual) {
                 const nuevosDetalles = pedidoActual.detalles.map(detalle => {
@@ -245,7 +245,7 @@ const MesasView = () => {
     // Función para actualizar el estado de la mesa
     const actualizarEstadoMesa = async (idMesa: number, nuevoEstado: string) => {
         try {
-            await axios.put(`https://localhost:7096/api/mesa/${idMesa}/estado`, { estado: nuevoEstado });
+            await axios.put(`https://192.168.0.6:7096/api/mesa/${idMesa}/estado`, { estado: nuevoEstado });
             console.log(`Estado de la mesa ${idMesa} actualizado a "${nuevoEstado}"`);
         } catch (error) {
             console.error("Error al actualizar el estado de la mesa", error);

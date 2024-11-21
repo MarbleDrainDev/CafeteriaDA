@@ -7,16 +7,40 @@
       "RelativeMoniker": "D:0:0:{A811B2CB-CFE7-4C9F-A4F9-EA2FCCA27E8B}|Coffe\\Coffe.csproj|solutionrelative:coffe\\controllers\\logincontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A811B2CB-CFE7-4C9F-A4F9-EA2FCCA27E8B}|Coffe\\Coffe.csproj|c:\\users\\trabajo\\desktop\\todo\\uni\\cafeda\\nuevoo\\sb1-duwxjw\\coffe\\coffe\\coffe\\coffe\\classes\\usuario.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A811B2CB-CFE7-4C9F-A4F9-EA2FCCA27E8B}|Coffe\\Coffe.csproj|solutionrelative:coffe\\classes\\usuario.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{A811B2CB-CFE7-4C9F-A4F9-EA2FCCA27E8B}|Coffe\\Coffe.csproj|c:\\users\\trabajo\\desktop\\todo\\uni\\cafeda\\nuevoo\\sb1-duwxjw\\coffe\\coffe\\coffe\\coffe\\controllers\\mesacontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A811B2CB-CFE7-4C9F-A4F9-EA2FCCA27E8B}|Coffe\\Coffe.csproj|solutionrelative:coffe\\controllers\\mesacontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A811B2CB-CFE7-4C9F-A4F9-EA2FCCA27E8B}|Coffe\\Coffe.csproj|c:\\users\\trabajo\\desktop\\todo\\uni\\cafeda\\nuevoo\\sb1-duwxjw\\coffe\\coffe\\coffe\\coffe\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A811B2CB-CFE7-4C9F-A4F9-EA2FCCA27E8B}|Coffe\\Coffe.csproj|solutionrelative:coffe\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{A811B2CB-CFE7-4C9F-A4F9-EA2FCCA27E8B}|Coffe\\Coffe.csproj|c:\\users\\trabajo\\desktop\\todo\\uni\\cafeda\\nuevoo\\sb1-duwxjw\\coffe\\coffe\\coffe\\coffe\\classes\\loginrequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A811B2CB-CFE7-4C9F-A4F9-EA2FCCA27E8B}|Coffe\\Coffe.csproj|solutionrelative:coffe\\classes\\loginrequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A811B2CB-CFE7-4C9F-A4F9-EA2FCCA27E8B}|Coffe\\Coffe.csproj|c:\\users\\trabajo\\desktop\\todo\\uni\\cafeda\\nuevoo\\sb1-duwxjw\\coffe\\coffe\\coffe\\coffe\\properties\\launchsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
-      "RelativeMoniker": "D:0:0:{A811B2CB-CFE7-4C9F-A4F9-EA2FCCA27E8B}|Coffe\\Coffe.csproj|solutionrelative:coffe\\properties\\launchsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+      "AbsoluteMoniker": "D:0:0:{A811B2CB-CFE7-4C9F-A4F9-EA2FCCA27E8B}|Coffe\\Coffe.csproj|c:\\users\\trabajo\\desktop\\todo\\uni\\cafeda\\nuevoo\\sb1-duwxjw\\coffe\\coffe\\coffe\\coffe\\classes\\mesa.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A811B2CB-CFE7-4C9F-A4F9-EA2FCCA27E8B}|Coffe\\Coffe.csproj|solutionrelative:coffe\\classes\\mesa.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A811B2CB-CFE7-4C9F-A4F9-EA2FCCA27E8B}|Coffe\\Coffe.csproj|c:\\users\\trabajo\\desktop\\todo\\uni\\cafeda\\nuevoo\\sb1-duwxjw\\coffe\\coffe\\coffe\\coffe\\classes\\pedidocondetalles.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A811B2CB-CFE7-4C9F-A4F9-EA2FCCA27E8B}|Coffe\\Coffe.csproj|solutionrelative:coffe\\classes\\pedidocondetalles.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A811B2CB-CFE7-4C9F-A4F9-EA2FCCA27E8B}|Coffe\\Coffe.csproj|c:\\users\\trabajo\\desktop\\todo\\uni\\cafeda\\nuevoo\\sb1-duwxjw\\coffe\\coffe\\coffe\\coffe\\classes\\producto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A811B2CB-CFE7-4C9F-A4F9-EA2FCCA27E8B}|Coffe\\Coffe.csproj|solutionrelative:coffe\\classes\\producto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A811B2CB-CFE7-4C9F-A4F9-EA2FCCA27E8B}|Coffe\\Coffe.csproj|c:\\users\\trabajo\\desktop\\todo\\uni\\cafeda\\nuevoo\\sb1-duwxjw\\coffe\\coffe\\coffe\\coffe\\classes\\sede.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A811B2CB-CFE7-4C9F-A4F9-EA2FCCA27E8B}|Coffe\\Coffe.csproj|solutionrelative:coffe\\classes\\sede.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A811B2CB-CFE7-4C9F-A4F9-EA2FCCA27E8B}|Coffe\\Coffe.csproj|c:\\users\\trabajo\\desktop\\todo\\uni\\cafeda\\nuevoo\\sb1-duwxjw\\coffe\\coffe\\coffe\\coffe\\classes\\roledto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A811B2CB-CFE7-4C9F-A4F9-EA2FCCA27E8B}|Coffe\\Coffe.csproj|solutionrelative:coffe\\classes\\roledto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A811B2CB-CFE7-4C9F-A4F9-EA2FCCA27E8B}|Coffe\\Coffe.csproj|c:\\users\\trabajo\\desktop\\todo\\uni\\cafeda\\nuevoo\\sb1-duwxjw\\coffe\\coffe\\coffe\\coffe\\hub\\mesahub.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A811B2CB-CFE7-4C9F-A4F9-EA2FCCA27E8B}|Coffe\\Coffe.csproj|solutionrelative:coffe\\hub\\mesahub.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A811B2CB-CFE7-4C9F-A4F9-EA2FCCA27E8B}|Coffe\\Coffe.csproj|c:\\users\\trabajo\\desktop\\todo\\uni\\cafeda\\nuevoo\\sb1-duwxjw\\coffe\\coffe\\coffe\\coffe\\controllers\\weatherforecastcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A811B2CB-CFE7-4C9F-A4F9-EA2FCCA27E8B}|Coffe\\Coffe.csproj|solutionrelative:coffe\\controllers\\weatherforecastcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{A811B2CB-CFE7-4C9F-A4F9-EA2FCCA27E8B}|Coffe\\Coffe.csproj|c:\\users\\trabajo\\desktop\\todo\\uni\\cafeda\\nuevoo\\sb1-duwxjw\\coffe\\coffe\\coffe\\coffe\\controllers\\productocontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -27,24 +51,40 @@
       "RelativeMoniker": "D:0:0:{A811B2CB-CFE7-4C9F-A4F9-EA2FCCA27E8B}|Coffe\\Coffe.csproj|solutionrelative:coffe\\controllers\\admincontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
+      "AbsoluteMoniker": "D:0:0:{A811B2CB-CFE7-4C9F-A4F9-EA2FCCA27E8B}|Coffe\\Coffe.csproj|c:\\users\\trabajo\\desktop\\todo\\uni\\cafeda\\nuevoo\\sb1-duwxjw\\coffe\\coffe\\coffe\\coffe\\properties\\launchsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{A811B2CB-CFE7-4C9F-A4F9-EA2FCCA27E8B}|Coffe\\Coffe.csproj|solutionrelative:coffe\\properties\\launchsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A811B2CB-CFE7-4C9F-A4F9-EA2FCCA27E8B}|Coffe\\Coffe.csproj|c:\\users\\trabajo\\desktop\\todo\\uni\\cafeda\\nuevoo\\sb1-duwxjw\\coffe\\coffe\\coffe\\coffe\\classes\\detalle_pedido.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A811B2CB-CFE7-4C9F-A4F9-EA2FCCA27E8B}|Coffe\\Coffe.csproj|solutionrelative:coffe\\classes\\detalle_pedido.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A811B2CB-CFE7-4C9F-A4F9-EA2FCCA27E8B}|Coffe\\Coffe.csproj|c:\\users\\trabajo\\desktop\\todo\\uni\\cafeda\\nuevoo\\sb1-duwxjw\\coffe\\coffe\\coffe\\coffe\\classes\\factura.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A811B2CB-CFE7-4C9F-A4F9-EA2FCCA27E8B}|Coffe\\Coffe.csproj|solutionrelative:coffe\\classes\\factura.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A811B2CB-CFE7-4C9F-A4F9-EA2FCCA27E8B}|Coffe\\Coffe.csproj|c:\\users\\trabajo\\desktop\\todo\\uni\\cafeda\\nuevoo\\sb1-duwxjw\\coffe\\coffe\\coffe\\coffe\\classes\\pedido.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A811B2CB-CFE7-4C9F-A4F9-EA2FCCA27E8B}|Coffe\\Coffe.csproj|solutionrelative:coffe\\classes\\pedido.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A811B2CB-CFE7-4C9F-A4F9-EA2FCCA27E8B}|Coffe\\Coffe.csproj|c:\\users\\trabajo\\desktop\\todo\\uni\\cafeda\\nuevoo\\sb1-duwxjw\\coffe\\coffe\\coffe\\coffe\\classes\\pedidorequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A811B2CB-CFE7-4C9F-A4F9-EA2FCCA27E8B}|Coffe\\Coffe.csproj|solutionrelative:coffe\\classes\\pedidorequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A811B2CB-CFE7-4C9F-A4F9-EA2FCCA27E8B}|Coffe\\Coffe.csproj|c:\\users\\trabajo\\desktop\\todo\\uni\\cafeda\\nuevoo\\sb1-duwxjw\\coffe\\coffe\\coffe\\coffe\\classes\\usuario.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A811B2CB-CFE7-4C9F-A4F9-EA2FCCA27E8B}|Coffe\\Coffe.csproj|solutionrelative:coffe\\classes\\usuario.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A811B2CB-CFE7-4C9F-A4F9-EA2FCCA27E8B}|Coffe\\Coffe.csproj|c:\\users\\trabajo\\desktop\\todo\\uni\\cafeda\\nuevoo\\sb1-duwxjw\\coffe\\coffe\\coffe\\coffe\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A811B2CB-CFE7-4C9F-A4F9-EA2FCCA27E8B}|Coffe\\Coffe.csproj|solutionrelative:coffe\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{A811B2CB-CFE7-4C9F-A4F9-EA2FCCA27E8B}|Coffe\\Coffe.csproj|c:\\users\\trabajo\\desktop\\todo\\uni\\cafeda\\nuevoo\\sb1-duwxjw\\coffe\\coffe\\coffe\\coffe\\coffe.csproj||{04B8AB82-A572-4FEF-95CE-5222444B6B64}|",
       "RelativeMoniker": "D:0:0:{A811B2CB-CFE7-4C9F-A4F9-EA2FCCA27E8B}|Coffe\\Coffe.csproj|solutionrelative:coffe\\coffe.csproj||{04B8AB82-A572-4FEF-95CE-5222444B6B64}|"
     },
     {
       "AbsoluteMoniker": "D:0:0:{A811B2CB-CFE7-4C9F-A4F9-EA2FCCA27E8B}|Coffe\\Coffe.csproj|c:\\users\\trabajo\\desktop\\todo\\uni\\cafeda\\nuevoo\\sb1-duwxjw\\coffe\\coffe\\coffe\\coffe\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
       "RelativeMoniker": "D:0:0:{A811B2CB-CFE7-4C9F-A4F9-EA2FCCA27E8B}|Coffe\\Coffe.csproj|solutionrelative:coffe\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A811B2CB-CFE7-4C9F-A4F9-EA2FCCA27E8B}|Coffe\\Coffe.csproj|c:\\users\\trabajo\\desktop\\todo\\uni\\cafeda\\nuevoo\\sb1-duwxjw\\coffe\\coffe\\coffe\\coffe\\controllers\\mesacontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A811B2CB-CFE7-4C9F-A4F9-EA2FCCA27E8B}|Coffe\\Coffe.csproj|solutionrelative:coffe\\controllers\\mesacontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A811B2CB-CFE7-4C9F-A4F9-EA2FCCA27E8B}|Coffe\\Coffe.csproj|c:\\users\\trabajo\\desktop\\todo\\uni\\cafeda\\nuevoo\\sb1-duwxjw\\coffe\\coffe\\coffe\\coffe\\classes\\sede.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A811B2CB-CFE7-4C9F-A4F9-EA2FCCA27E8B}|Coffe\\Coffe.csproj|solutionrelative:coffe\\classes\\sede.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A811B2CB-CFE7-4C9F-A4F9-EA2FCCA27E8B}|Coffe\\Coffe.csproj|c:\\users\\trabajo\\desktop\\todo\\uni\\cafeda\\nuevoo\\sb1-duwxjw\\coffe\\coffe\\coffe\\coffe\\classes\\roledto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A811B2CB-CFE7-4C9F-A4F9-EA2FCCA27E8B}|Coffe\\Coffe.csproj|solutionrelative:coffe\\classes\\roledto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -54,15 +94,140 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 9,
+          "SelectedChildIndex": 20,
           "Children": [
             {
               "$type": "Bookmark",
               "Name": "ST:0:0:{aa2115a1-9712-457b-9047-dbb71ca2cdd2}"
             },
             {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{cce594b6-0c39-4442-ba28-10c64ac7e89f}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "PedidoConDetalles.cs",
+              "DocumentMoniker": "C:\\Users\\Trabajo\\Desktop\\Todo\\UNI\\CafeDA\\Nuevoo\\sb1-duwxjw\\Coffe\\Coffe\\Coffe\\Coffe\\Classes\\PedidoConDetalles.cs",
+              "RelativeDocumentMoniker": "Coffe\\Classes\\PedidoConDetalles.cs",
+              "ToolTip": "C:\\Users\\Trabajo\\Desktop\\Todo\\UNI\\CafeDA\\Nuevoo\\sb1-duwxjw\\Coffe\\Coffe\\Coffe\\Coffe\\Classes\\PedidoConDetalles.cs",
+              "RelativeToolTip": "Coffe\\Classes\\PedidoConDetalles.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-18T01:40:04.464Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "Detalle_Pedido.cs",
+              "DocumentMoniker": "C:\\Users\\Trabajo\\Desktop\\Todo\\UNI\\CafeDA\\Nuevoo\\sb1-duwxjw\\Coffe\\Coffe\\Coffe\\Coffe\\Classes\\Detalle_Pedido.cs",
+              "RelativeDocumentMoniker": "Coffe\\Classes\\Detalle_Pedido.cs",
+              "ToolTip": "C:\\Users\\Trabajo\\Desktop\\Todo\\UNI\\CafeDA\\Nuevoo\\sb1-duwxjw\\Coffe\\Coffe\\Coffe\\Coffe\\Classes\\Detalle_Pedido.cs",
+              "RelativeToolTip": "Coffe\\Classes\\Detalle_Pedido.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAqwA0AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-18T01:00:56.562Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 14,
+              "Title": "Factura.cs",
+              "DocumentMoniker": "C:\\Users\\Trabajo\\Desktop\\Todo\\UNI\\CafeDA\\Nuevoo\\sb1-duwxjw\\Coffe\\Coffe\\Coffe\\Coffe\\Classes\\Factura.cs",
+              "RelativeDocumentMoniker": "Coffe\\Classes\\Factura.cs",
+              "ToolTip": "C:\\Users\\Trabajo\\Desktop\\Todo\\UNI\\CafeDA\\Nuevoo\\sb1-duwxjw\\Coffe\\Coffe\\Coffe\\Coffe\\Classes\\Factura.cs",
+              "RelativeToolTip": "Coffe\\Classes\\Factura.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAqwAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-18T01:00:55.592Z"
+            },
+            {
               "$type": "Document",
               "DocumentIndex": 2,
+              "Title": "LoginRequest.cs",
+              "DocumentMoniker": "C:\\Users\\Trabajo\\Desktop\\Todo\\UNI\\CafeDA\\Nuevoo\\sb1-duwxjw\\Coffe\\Coffe\\Coffe\\Coffe\\Classes\\LoginRequest.cs",
+              "RelativeDocumentMoniker": "Coffe\\Classes\\LoginRequest.cs",
+              "ToolTip": "C:\\Users\\Trabajo\\Desktop\\Todo\\UNI\\CafeDA\\Nuevoo\\sb1-duwxjw\\Coffe\\Coffe\\Coffe\\Coffe\\Classes\\LoginRequest.cs",
+              "RelativeToolTip": "Coffe\\Classes\\LoginRequest.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-18T01:00:54.276Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "Mesa.cs",
+              "DocumentMoniker": "C:\\Users\\Trabajo\\Desktop\\Todo\\UNI\\CafeDA\\Nuevoo\\sb1-duwxjw\\Coffe\\Coffe\\Coffe\\Coffe\\Classes\\Mesa.cs",
+              "RelativeDocumentMoniker": "Coffe\\Classes\\Mesa.cs",
+              "ToolTip": "C:\\Users\\Trabajo\\Desktop\\Todo\\UNI\\CafeDA\\Nuevoo\\sb1-duwxjw\\Coffe\\Coffe\\Coffe\\Coffe\\Classes\\Mesa.cs",
+              "RelativeToolTip": "Coffe\\Classes\\Mesa.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-18T01:00:53.564Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 15,
+              "Title": "Pedido.cs",
+              "DocumentMoniker": "C:\\Users\\Trabajo\\Desktop\\Todo\\UNI\\CafeDA\\Nuevoo\\sb1-duwxjw\\Coffe\\Coffe\\Coffe\\Coffe\\Classes\\Pedido.cs",
+              "RelativeDocumentMoniker": "Coffe\\Classes\\Pedido.cs",
+              "ToolTip": "C:\\Users\\Trabajo\\Desktop\\Todo\\UNI\\CafeDA\\Nuevoo\\sb1-duwxjw\\Coffe\\Coffe\\Coffe\\Coffe\\Classes\\Pedido.cs",
+              "RelativeToolTip": "Coffe\\Classes\\Pedido.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-18T01:00:51.44Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 16,
+              "Title": "PedidoRequest.cs",
+              "DocumentMoniker": "C:\\Users\\Trabajo\\Desktop\\Todo\\UNI\\CafeDA\\Nuevoo\\sb1-duwxjw\\Coffe\\Coffe\\Coffe\\Coffe\\Classes\\PedidoRequest.cs",
+              "RelativeDocumentMoniker": "Coffe\\Classes\\PedidoRequest.cs",
+              "ToolTip": "C:\\Users\\Trabajo\\Desktop\\Todo\\UNI\\CafeDA\\Nuevoo\\sb1-duwxjw\\Coffe\\Coffe\\Coffe\\Coffe\\Classes\\PedidoRequest.cs",
+              "RelativeToolTip": "Coffe\\Classes\\PedidoRequest.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAqwAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-18T01:00:50.368Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "Producto.cs",
+              "DocumentMoniker": "C:\\Users\\Trabajo\\Desktop\\Todo\\UNI\\CafeDA\\Nuevoo\\sb1-duwxjw\\Coffe\\Coffe\\Coffe\\Coffe\\Classes\\Producto.cs",
+              "RelativeDocumentMoniker": "Coffe\\Classes\\Producto.cs",
+              "ToolTip": "C:\\Users\\Trabajo\\Desktop\\Todo\\UNI\\CafeDA\\Nuevoo\\sb1-duwxjw\\Coffe\\Coffe\\Coffe\\Coffe\\Classes\\Producto.cs",
+              "RelativeToolTip": "Coffe\\Classes\\Producto.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-18T01:00:49.371Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "MesaHub.cs",
+              "DocumentMoniker": "C:\\Users\\Trabajo\\Desktop\\Todo\\UNI\\CafeDA\\Nuevoo\\sb1-duwxjw\\Coffe\\Coffe\\Coffe\\Coffe\\Hub\\MesaHub.cs",
+              "RelativeDocumentMoniker": "Coffe\\Hub\\MesaHub.cs",
+              "ToolTip": "C:\\Users\\Trabajo\\Desktop\\Todo\\UNI\\CafeDA\\Nuevoo\\sb1-duwxjw\\Coffe\\Coffe\\Coffe\\Coffe\\Hub\\MesaHub.cs",
+              "RelativeToolTip": "Coffe\\Hub\\MesaHub.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-18T01:00:42.159Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "WeatherForecastController.cs",
+              "DocumentMoniker": "C:\\Users\\Trabajo\\Desktop\\Todo\\UNI\\CafeDA\\Nuevoo\\sb1-duwxjw\\Coffe\\Coffe\\Coffe\\Coffe\\Controllers\\WeatherForecastController.cs",
+              "RelativeDocumentMoniker": "Coffe\\Controllers\\WeatherForecastController.cs",
+              "ToolTip": "C:\\Users\\Trabajo\\Desktop\\Todo\\UNI\\CafeDA\\Nuevoo\\sb1-duwxjw\\Coffe\\Coffe\\Coffe\\Coffe\\Controllers\\WeatherForecastController.cs",
+              "RelativeToolTip": "Coffe\\Controllers\\WeatherForecastController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-18T01:00:40.15Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 18,
               "Title": "Program.cs",
               "DocumentMoniker": "C:\\Users\\Trabajo\\Desktop\\Todo\\UNI\\CafeDA\\Nuevoo\\sb1-duwxjw\\Coffe\\Coffe\\Coffe\\Coffe\\Program.cs",
               "RelativeDocumentMoniker": "Coffe\\Program.cs",
@@ -74,19 +239,19 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 12,
               "Title": "launchSettings.json",
               "DocumentMoniker": "C:\\Users\\Trabajo\\Desktop\\Todo\\UNI\\CafeDA\\Nuevoo\\sb1-duwxjw\\Coffe\\Coffe\\Coffe\\Coffe\\Properties\\launchSettings.json",
               "RelativeDocumentMoniker": "Coffe\\Properties\\launchSettings.json",
               "ToolTip": "C:\\Users\\Trabajo\\Desktop\\Todo\\UNI\\CafeDA\\Nuevoo\\sb1-duwxjw\\Coffe\\Coffe\\Coffe\\Coffe\\Properties\\launchSettings.json",
               "RelativeToolTip": "Coffe\\Properties\\launchSettings.json",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABcAAAAgAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABYAAAAfAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
               "WhenOpened": "2024-11-15T00:51:52.983Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 19,
               "Title": "Coffe",
               "DocumentMoniker": "C:\\Users\\Trabajo\\Desktop\\Todo\\UNI\\CafeDA\\Nuevoo\\sb1-duwxjw\\Coffe\\Coffe\\Coffe\\Coffe\\Coffe.csproj",
               "RelativeDocumentMoniker": "Coffe\\Coffe.csproj",
@@ -97,7 +262,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 20,
               "Title": "appsettings.json",
               "DocumentMoniker": "C:\\Users\\Trabajo\\Desktop\\Todo\\UNI\\CafeDA\\Nuevoo\\sb1-duwxjw\\Coffe\\Coffe\\Coffe\\Coffe\\appsettings.json",
               "RelativeDocumentMoniker": "Coffe\\appsettings.json",
@@ -109,7 +274,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 10,
               "Title": "ProductoController.cs",
               "DocumentMoniker": "C:\\Users\\Trabajo\\Desktop\\Todo\\UNI\\CafeDA\\Nuevoo\\sb1-duwxjw\\Coffe\\Coffe\\Coffe\\Coffe\\Controllers\\ProductoController.cs",
               "RelativeDocumentMoniker": "Coffe\\Controllers\\ProductoController.cs",
@@ -121,19 +286,20 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
+              "DocumentIndex": 1,
               "Title": "MesaController.cs",
               "DocumentMoniker": "C:\\Users\\Trabajo\\Desktop\\Todo\\UNI\\CafeDA\\Nuevoo\\sb1-duwxjw\\Coffe\\Coffe\\Coffe\\Coffe\\Controllers\\MesaController.cs",
               "RelativeDocumentMoniker": "Coffe\\Controllers\\MesaController.cs",
               "ToolTip": "C:\\Users\\Trabajo\\Desktop\\Todo\\UNI\\CafeDA\\Nuevoo\\sb1-duwxjw\\Coffe\\Coffe\\Coffe\\Coffe\\Controllers\\MesaController.cs",
               "RelativeToolTip": "Coffe\\Controllers\\MesaController.cs",
-              "ViewState": "AgIAANYAAAAAAAAAAAAawIYBAABaAAAAAAAAAA==",
+              "ViewState": "AgIAADYAAAAAAAAAAAAnwEsAAAAZAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-29T15:18:36.289Z"
+              "WhenOpened": "2024-10-29T15:18:36.289Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 9,
+              "DocumentIndex": 6,
               "Title": "Sede.cs",
               "DocumentMoniker": "C:\\Users\\Trabajo\\Desktop\\Todo\\UNI\\CafeDA\\Nuevoo\\sb1-duwxjw\\Coffe\\Coffe\\Coffe\\Coffe\\Classes\\Sede.cs",
               "RelativeDocumentMoniker": "Coffe\\Classes\\Sede.cs",
@@ -145,7 +311,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 17,
               "Title": "Usuario.cs",
               "DocumentMoniker": "C:\\Users\\Trabajo\\Desktop\\Todo\\UNI\\CafeDA\\Nuevoo\\sb1-duwxjw\\Coffe\\Coffe\\Coffe\\Coffe\\Classes\\Usuario.cs",
               "RelativeDocumentMoniker": "Coffe\\Classes\\Usuario.cs",
@@ -163,14 +329,14 @@
               "RelativeDocumentMoniker": "Coffe\\Controllers\\LoginController.cs",
               "ToolTip": "C:\\Users\\Trabajo\\Desktop\\Todo\\UNI\\CafeDA\\Nuevoo\\sb1-duwxjw\\Coffe\\Coffe\\Coffe\\Coffe\\Controllers\\LoginController.cs",
               "RelativeToolTip": "Coffe\\Controllers\\LoginController.cs",
-              "ViewState": "AgIAACUAAAAAAAAAAAAgwEcAAAANAAAAAAAAAA==",
+              "ViewState": "AgIAAAMAAAAAAAAAAAAAABkAAAAmAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-10-28T01:30:09.81Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 10,
+              "DocumentIndex": 7,
               "Title": "RoleDto.cs",
               "DocumentMoniker": "C:\\Users\\Trabajo\\Desktop\\Todo\\UNI\\CafeDA\\Nuevoo\\sb1-duwxjw\\Coffe\\Coffe\\Coffe\\Coffe\\Classes\\RoleDto.cs",
               "RelativeDocumentMoniker": "Coffe\\Classes\\RoleDto.cs",
@@ -182,19 +348,15 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 11,
               "Title": "AdminController.cs",
               "DocumentMoniker": "C:\\Users\\Trabajo\\Desktop\\Todo\\UNI\\CafeDA\\Nuevoo\\sb1-duwxjw\\Coffe\\Coffe\\Coffe\\Coffe\\Controllers\\AdminController.cs",
               "RelativeDocumentMoniker": "Coffe\\Controllers\\AdminController.cs",
               "ToolTip": "C:\\Users\\Trabajo\\Desktop\\Todo\\UNI\\CafeDA\\Nuevoo\\sb1-duwxjw\\Coffe\\Coffe\\Coffe\\Coffe\\Controllers\\AdminController.cs",
               "RelativeToolTip": "Coffe\\Controllers\\AdminController.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAC8AAABhAAAAAAAAAA==",
+              "ViewState": "AgIAABkAAAAAAAAAAAAgwBEAAAAaAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-10-28T00:51:53.912Z"
-            },
-            {
-              "$type": "Bookmark",
-              "Name": "ST:0:0:{cce594b6-0c39-4442-ba28-10c64ac7e89f}"
             }
           ]
         }

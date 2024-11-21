@@ -39,11 +39,11 @@ const MeseroProductList: React.FC = () => {
         try {
             if (isEditMode) {
                 // Si es modo edición, usa PATCH para actualizar el producto
-                await axios.put(`https://192.168.0.5:7096/api/Producto/${newProduct.id}`, newProduct);
+                await axios.put(`https://192.168.0.6:7096/api/Producto/${newProduct.id}`, newProduct);
                 console.log('Producto actualizado correctamente');
             } else {
                 // Si es modo agregar, usa POST para crear un nuevo producto
-                await axios.post('https://192.168.0.5:7096/api/Producto', newProduct);
+                await axios.post('https://192.168.0.6:7096/api/Producto', newProduct);
                 console.log('Producto agregado correctamente');
             }
             setShowModal(false);
@@ -77,7 +77,7 @@ const MeseroProductList: React.FC = () => {
         };
 
         try {
-            const response = await axios.post(`https://192.168.0.5:7096/api/mesa/${selectedMesaId}/productos`, detallePedido);
+            const response = await axios.post(`https://192.168.0.6:7096/api/mesa/${selectedMesaId}/productos`, detallePedido);
     
             if (response.status === 200) {
                 alert('Producto agregado al pedido.');
@@ -101,7 +101,7 @@ const MeseroProductList: React.FC = () => {
 
     async function obtenerProductos(): Promise<Producto[]> {
         try {
-            const response = await axios.get<Producto[]>(`https://192.168.0.5:7096/api/Producto/sede/${sedeId}`);
+            const response = await axios.get<Producto[]>(`https://192.168.0.6:7096/api/Producto/sede/${sedeId}`);
             setProductos(response.data);
             console.log('Productos:', response.data);
             return response.data;
@@ -123,7 +123,7 @@ const MeseroProductList: React.FC = () => {
         // Fetch mesas
         const fetchMesas = async () => {
             try {
-                const response = await axios.get('https://192.168.0.5:7096/api/Mesa?sedeId=1'); // Cambia la URL según sea necesario
+                const response = await axios.get('https://192.168.0.6:7096/api/Mesa?sedeId=1'); // Cambia la URL según sea necesario
                 setMesas(response.data);
             } catch (error) {
                 console.error('Error al obtener las mesas:', error);
