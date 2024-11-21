@@ -272,3 +272,9 @@ C:\Users\Trabajo\Desktop\Todo\UNI\CafeDA\Nuevoo\sb1-duwxjw\Coffe\Coffe\Coffe\Cof
 C:\Users\Trabajo\Desktop\Todo\UNI\CafeDA\Nuevoo\sb1-duwxjw\Coffe\Coffe\Coffe\Coffe\obj\Debug\net8.0\staticwebassets.pack.json
 C:\Users\Trabajo\Desktop\Todo\UNI\CafeDA\Nuevoo\sb1-duwxjw\Coffe\Coffe\Coffe\Coffe\obj\Debug\net8.0\scopedcss\bundle\Coffe.styles.css
 C:\Users\Trabajo\Desktop\Todo\UNI\CafeDA\Nuevoo\sb1-duwxjw\Coffe\Coffe\Coffe\Coffe\obj\Debug\net8.0\Coffe.csproj.Up2Date
+C:\Users\Trabajo\Desktop\Todo\UNI\CafeDA\Nuevoo\sb1-duwxjw\Coffe\Coffe\Coffe\Coffe\bin\Debug\net8.0\Coffe.deps.json
+C:\Users\Trabajo\Desktop\Todo\UNI\CafeDA\Nuevoo\sb1-duwxjw\Coffe\Coffe\Coffe\Coffe\bin\Debug\net8.0\Coffe.runtimeconfig.json
+C:\Users\Trabajo\Desktop\Todo\UNI\CafeDA\Nuevoo\sb1-duwxjw\Coffe\Coffe\Coffe\Coffe\bin\Debug\net8.0\Coffe.dll
+C:\Users\Trabajo\Desktop\Todo\UNI\CafeDA\Nuevoo\sb1-duwxjw\Coffe\Coffe\Coffe\Coffe\bin\Debug\net8.0\Coffe.pdb
+C:\Users\Trabajo\Desktop\Todo\UNI\CafeDA\Nuevoo\sb1-duwxjw\Coffe\Coffe\Coffe\Coffe\obj\Debug\net8.0\Coffe.genruntimeconfig.cache
+C:\Users\Trabajo\Desktop\Todo\UNI\CafeDA\Nuevoo\sb1-duwxjw\Coffe\Coffe\Coffe\Coffe\obj\Debug\net8.0\ref\Coffe.dll
