@@ -187,5 +187,86 @@ SELECT * FROM Mesas;
 SELECT * FROM facturas;
 ```
 
+# Método GetMesas con Algoritmo de Ordenamiento Burbuja
+
+Descripción: Este método obtiene una lista de mesas de una sede específica y las ordena por el número de mesa utilizando el algoritmo de ordenamiento burbuja.
+
+Partes del Código:
+
+•	Conexión a la Base de Datos: Se establece una conexión a la base de datos y se ejecuta una consulta para obtener las mesas de una sede específica.
+
+•	Lectura de Datos: Se leen los datos obtenidos de la consulta y se agregan a una lista de objetos Mesa.
+
+•	Ordenamiento Burbuja: Se aplica el algoritmo de ordenamiento burbuja para ordenar las mesas por el número de mesa.
+
+•	Retorno de Datos: Se retorna la lista de mesas ordenadas.
+
+
+```typescript
+
+        [HttpGet]
+        public IActionResult GetMesas(int sedeId)
+        {
+            try
+            {
+                List<Mesa> mesas = new List<Mesa>();
+                string connectionString = "Server=localhost;Database=Cafeteria;Uid=root;Pwd=1234;";
+                using (var connection = new MySqlConnection(connectionString))
+                {
+                    connection.Open();
+                    string query = "SELECT * FROM Mesas WHERE sede_id = @sedeId";
+                    using (var command = new MySqlCommand(query, connection))
+                    {
+                        command.Parameters.AddWithValue("@sedeId", sedeId);
+                        using (var reader = command.ExecuteReader())
+                        {
+                            while (reader.Read())
+                            {
+                                mesas.Add(new Mesa
+                                {
+                                    id = reader.GetInt32("Id"),
+                                    numero_mesa = reader.GetInt32("numero_mesa"),
+                                    estado = reader.GetString("estado")
+                                });
+                            }
+                        }
+                    }
+                }
+
+                // Ordenar las mesas por número de mesa usando el algoritmo de burbuja
+                for (int i = 0; i < mesas.Count - 1; i++)
+                {
+                    for (int j = 0; j < mesas.Count - i - 1; j++)
+                    {
+                        if (mesas[j].numero_mesa > mesas[j + 1].numero_mesa)
+                        {
+                            var temp = mesas[j];
+                            mesas[j] = mesas[j + 1];
+                            mesas[j + 1] = temp;
+                        }
+                    }
+                }
+
+                return Ok(mesas);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, $"Error interno del servidor: {ex.Message}");
+            }
+        }
+
+```
+# Por qué es un Algoritmo Voraz
+El algoritmo es voraz porque en cada paso selecciona el producto que maximiza el beneficio inmediato, definido como el precio del producto. Este enfoque asegura que se utilice el presupuesto de la manera más eficiente posible.
+1.	Ordenar los productos por beneficio (precio) en orden descendente: El algoritmo primero ordena los productos disponibles por su precio en orden descendente. Esto significa que los productos más caros, que ofrecen el mayor beneficio por unidad, se consideran primero.
+2.	Seleccionar los productos en ese orden y agregarlos al pedido hasta que se agote el presupuesto: Luego, el algoritmo recorre la lista de productos ordenados y selecciona tantos como sea posible sin exceder el presupuesto disponible. Para cada producto, calcula cuántas unidades se pueden comprar con el presupuesto restante. Si se puede comprar al menos una unidad, se crea un detalle de pedido para ese producto y se actualiza el presupuesto restante.
+Este proceso se repite hasta que el presupuesto se agota o no se pueden comprar más productos. Al tomar decisiones basadas en el beneficio inmediato en cada paso, el algoritmo cumple con la definición de un algoritmo voraz.
+```typescript
+[HttpPost("{mesaId}/productos")]
+
+```
+         
 > [!CAUTION]
 > Advises about risks or negative outcomes of certain actions.
+
+
