@@ -53,6 +53,7 @@
               )}
               {user.rol === 3 && ( // Cajero
                 <Route path="/" element={<CajeroView onLogout={handleLogout} />} />
+
               )}
               <Route path="/productos" element={<ProductList />} />
               <Route path="/mesas" element={<MesasView sedeId={user.sedeId!} />} /> {/* Pasar sedeId */}

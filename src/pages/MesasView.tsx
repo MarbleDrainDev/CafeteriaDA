@@ -29,16 +29,44 @@ interface Pedido {
     total: number;
     detalles: DetallePedido[];
 }
+const EstadoMesas = ({ ocupadas, disponibles }: { ocupadas: number, disponibles: number }) => {
+    return (
+        <div style={{
+            position: 'fixed',
+            bottom: '10px',
+            right: '10px',
+            backgroundColor: 'white',
+            padding: '10px',
+            border: '1px solid #ccc',
+            borderRadius: '5px',
+            boxShadow: '0 0 10px rgba(0, 0, 0, 0.1)',
+            zIndex: 1000,
+            maxWidth: '200px',
+            wordWrap: 'break-word'
+        }}>
+            <p>Mesas ocupadas: {ocupadas}</p>
+            <p>Mesas disponibles: {disponibles}</p>
+        </div>
+    );
+};
+
 const MesasView = () => {
     const [mesas, setMesas] = useState<Mesa[]>([]);
     const [productos, setProductos] = useState<Producto[]>([]);
     const [pedidoActual, setPedidoActual] = useState<Pedido | null>(null);
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [selectedMesaId, setSelectedMesaId] = useState<number | null>(null);
+
+    const [ocupadas, setOcupadas] = useState(0);
+    const [disponibles, setDisponibles] = useState(0);
+
+    const [searchTerm, setSearchTerm] = useState<string>('');
+    const [filteredProductos, setFilteredProductos] = useState<Producto[]>([]);
+
+
     const navigate = useNavigate();
     const sedeId = Number(localStorage.getItem("sedeId"));
     const meseroId = parseInt(localStorage.getItem("meseroId") || "1", 10); // Convertir a número y verificar si es válido
-
     const [isDetalleModalOpen, setIsDetalleModalOpen] = useState(false);
     const [detalleTexto, setDetalleTexto] = useState("");
     const [detalleIndex, setDetalleIndex] = useState<number | null>(null);
@@ -68,6 +96,101 @@ const MesasView = () => {
             console.error("sedeId no es válido");
         }
     }, [sedeId]);
+
+    //--Algoritmo de Busqueda Binaria----------------------------------------------------------
+    useEffect(() => {
+        if (searchTerm) {
+            const productosOrdenados = productos.sort((a, b) => a.nombre.localeCompare(b.nombre));
+            const nombres = productosOrdenados.map(p => p.nombre.toLowerCase());
+            const index = binarySearch(nombres, searchTerm.toLowerCase());
+            if (index !== -1) {
+                setFilteredProductos([productosOrdenados[index]]);
+            } else {
+                setFilteredProductos([]);
+            }
+        } else {
+            setFilteredProductos(productos);
+        }
+    }, [searchTerm, productos]);
+
+    const binarySearch = (arr: number[], target: number): number => {
+        let left = 0;
+        let right = arr.length - 1;
+    
+        while (left <= right) {
+            const mid = Math.floor((left + right) / 2);
+            if (arr[mid] === target) {
+                return mid;
+            } else if (arr[mid] < target) {
+                left = mid + 1;
+            } else {
+                right = mid - 1;
+            }
+        }
+    
+        return -1;
+    };
+
+    //--Algoritmo de Búsqueda en Profundidad (DFS)-------------------------------------------------
+
+    const dfs = (graph: Record<number, number[]>, start: number): number[] => {
+        const stack = [start];
+        const visited: Set<number> = new Set();
+        const result: number[] = [];
+    
+        while (stack.length > 0) {
+            const node = stack.pop();
+            if (node !== undefined && !visited.has(node)) {
+                visited.add(node);
+                result.push(node);
+                const neighbors = graph[node];
+                for (let i = neighbors.length - 1; i >= 0; i--) {
+                    stack.push(neighbors[i]);
+                }
+            }
+        }
+    
+        return result;
+    };
+    const contarEstadosMesas = () => {
+        const graph: Record<number, number[]> = {};
+        mesas.forEach(mesa => {
+            graph[mesa.id] = mesas.filter(m => m.id !== mesa.id).map(m => m.id);
+        });
+    
+        const recorrido = dfs(graph, mesas[0]?.id || 0);
+        let ocupadas = 0;
+        let disponibles = 0;
+    
+        recorrido.forEach(id => {
+            const mesa = mesas.find(m => m.id === id);
+            if (mesa?.estado === 'Ocupada') {
+                ocupadas++;
+            } else if (mesa?.estado === 'Disponible') {
+                disponibles++;
+            }
+        });
+    
+        setOcupadas(ocupadas);
+        setDisponibles(disponibles);
+    };
+    useEffect(() => {
+        if (mesas.length > 0) {
+            contarEstadosMesas();
+        }
+    }, [mesas]);
+    
+
+    // useEffect(() => {
+    //     if (mesas.length > 0) {
+    //         const ocupadas = mesas.filter(mesa => mesa.estado === 'Ocupada').length;
+    //         const disponibles = mesas.filter(mesa => mesa.estado === 'Disponible').length;
+    //         setOcupadas(ocupadas);
+    //         setDisponibles(disponibles);
+    //     }
+    // }, [mesas]);
+
+    //--------------------------------------------------------------------------------
 
     
     const openDetalleModal = (index: number) => {
@@ -140,15 +263,39 @@ const MesasView = () => {
             alert("No se pudo obtener las mesas.");
         }
     };
+
+    //---Algoritmo de ordenamiento----------------------------------------------------------------
+    const quickSort = (arr: Producto[]): Producto[] => {
+        if (arr.length <= 1) return arr;
+        const pivot = arr[Math.floor(arr.length / 2)];
+        const left = arr.filter(x => x.precio < pivot.precio);
+        const right = arr.filter(x => x.precio > pivot.precio);
+        return [...quickSort(left), pivot, ...quickSort(right)];
+    };
+
     const fetchProductos = async () => {
         try {
             const response = await axios.get(`https://192.168.1.2:7096/api/Producto/sede/${sedeId}`);
-            setProductos(response.data);
+            const sortedProductos = quickSort(response.data);
+            setProductos(sortedProductos);
         } catch (error) {
-            console.error("Error al obtener los productos", error);
-            alert("No se pudo obtener los productos.");
+            console.error("Error al obtener los productos:", error);
         }
     };
+
+    // const fetchProductos = async () => {
+    //     try {
+    //         const response = await axios.get(`https://192.168.1.2:7096/api/Producto/sede/${sedeId}`);
+    //         setProductos(response.data);
+    //     } catch (error) {
+    //         console.error("Error al obtener los productos", error);
+    //         alert("No se pudo obtener los productos.");
+    //     }
+    // };
+
+    //-------------------------------------------------------------------------------------------
+
+    
     const fetchPedidoMesa = async (mesaId: number) => {
         try {
             const response = await axios.get(`https://192.168.1.2:7096/api/Mesa/${mesaId}/pedido`);
@@ -222,18 +369,16 @@ const MesasView = () => {
                 return;
             }
             try {
-                const detallesConDetalle = pedidoActual.detalles.map((detalle) => ({
-                    idProducto: detalle.id_producto,
-                    cantidad: detalle.cantidad,
-                    precioUnitario: detalle.precio_unitario,
-                    detalles: detalle.detalle || "",
-                }));
-    
                 const pedidoRequest = {
                     idMesero: pedidoActual.id_mesero,
                     idCajero: pedidoActual.id_cajero,
                     idMesa: selectedMesaId,
-                    detalles: detallesConDetalle,
+                    detalles: pedidoActual.detalles.map(detalle => ({
+                        idProducto: detalle.id_producto,
+                        cantidad: detalle.cantidad,
+                        precioUnitario: detalle.precio_unitario,
+                        detalles: detalle.detalle || "",
+                    })),
                 };
     
                 if (pedidoActual.id) {
@@ -242,6 +387,8 @@ const MesasView = () => {
                 } else {
                     await axios.post('https://192.168.1.2:7096/api/mesa/pedido', pedidoRequest);
                     alert("Pedido guardado exitosamente");
+                    // Actualizar el estado de la mesa a "Ocupada"
+                    await actualizarEstadoMesa(selectedMesaId, "Ocupada");
                 }
     
                 // Actualizar el stock después de guardar el pedido
@@ -317,13 +464,14 @@ const MesasView = () => {
     // Función para actualizar el estado de la mesa
     const actualizarEstadoMesa = async (idMesa: number, nuevoEstado: string) => {
         try {
-            await axios.put(`https://192.168.1.2:7096/api/mesa/${idMesa}/estado`, { estado: nuevoEstado });
+            const response = await axios.put(`https://192.168.1.2:7096/api/mesa/${idMesa}/estado`, { estado: nuevoEstado });
             console.log(`Estado de la mesa ${idMesa} actualizado a "${nuevoEstado}"`);
+            console.log('Respuesta del servidor:', response);
         } catch (error) {
             console.error("Error al actualizar el estado de la mesa", error);
             alert("No se pudo actualizar el estado de la mesa.");
         }
-    };    
+    };
     const closeModal = () => {
         setIsModalOpen(false);
         setSelectedMesaId(null);
@@ -347,13 +495,43 @@ const MesasView = () => {
                 ) : (
                     <p>No se encontraron mesas.</p>
                 )}
-                                            <button
-                                onClick={() => navigate(-1)}
-                                className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600"
-                            >
-                                Regresar
-                            </button>
+                <button
+                    onClick={() => navigate(-1)}
+                    className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600"
+                    >
+                    Regresar
+                </button>
+
             </div>
+            {/* <input
+                type="text"
+                placeholder="Buscar producto por nombre"
+                value={searchTerm}
+                onChange={(e) => setSearchTerm(e.target.value)}
+                className="mt-4 p-2 border rounded"
+            />
+            <div className="mt-4">
+                {filteredProductos.length > 0 ? (
+                    filteredProductos.map((producto) => (
+                        <div key={producto.id} className="p-4 border rounded shadow">
+                            <h3 className="font-bold">{producto.nombre}</h3>
+                            <p>Precio: ${producto.precio.toFixed(2)}</p>
+                            <p>{producto.descripcion}</p>
+                            <button
+                                className="mt-2 p-2 bg-blue-500 text-white rounded"
+                                onClick={() => agregarProductoPedido(producto)}
+                            >
+                                Agregar al pedido
+                            </button>
+                        </div>
+                    ))
+                ) : (
+                    <p>No se encontraron productos.</p>
+                )}
+            </div> */}
+
+            <EstadoMesas ocupadas={ocupadas} disponibles={disponibles} />
+
             {isModalOpen && (
                 <div className="fixed inset-0 flex items-center justify-center z-50 bg-black bg-opacity-50">
                     <div className="bg-white p-6 rounded shadow-lg max-w-2xl w-full">
@@ -363,7 +541,34 @@ const MesasView = () => {
                         <div className="grid grid-cols-2 gap-4">
                             <div>
                                 <h3 className="font-bold mb-2">Menú</h3>
+                                {/* Algoritmo de busqueda Binaria */}
+                                <input
+                                    type="text"
+                                    placeholder="Buscar producto por nombre"
+                                    value={searchTerm}
+                                    onChange={(e) => setSearchTerm(e.target.value)}
+                                    className="mt-4 p-2 border rounded"
+                                />
                                 <div className="flex flex-col gap-4 max-h-80 overflow-y-auto">
+                                    {filteredProductos.length > 0 ? (
+                                        filteredProductos.map((producto) => (
+                                            <div key={producto.id} className="p-4 border rounded shadow">
+                                                <h3 className="font-bold">{producto.nombre}</h3>
+                                                <p>Precio: ${producto.precio.toFixed(2)}</p>
+                                                <p>{producto.descripcion}</p>
+                                                <button
+                                                    className="mt-2 p-2 bg-blue-500 text-white rounded"
+                                                    onClick={() => agregarProductoPedido(producto)}
+                                                >
+                                                    Agregar al pedido
+                                                </button>
+                                            </div>
+                                        ))
+                                    ) : (
+                                        <p>No se encontraron productos.</p>
+                                    )}
+                                </div>
+                                {/* <div className="flex flex-col gap-4 max-h-80 overflow-y-auto">
                                     {productos.length > 0 ? (
                                         productos.map((producto) => (
                                             <div key={producto.id} className="p-4 border rounded shadow">
@@ -381,7 +586,7 @@ const MesasView = () => {
                                     ) : (
                                         <p>No se encontraron productos para esta sede.</p>
                                     )}
-                                </div>
+                                </div> */}
                             </div>
                             <div className="flex flex-col gap-4 max-h-80 overflow-y-auto">
                                 {pedidoActual ? (
@@ -480,7 +685,7 @@ const MesasView = () => {
                     </div>
                 </div>
             )}
-
+            
         </div>
     );
 };

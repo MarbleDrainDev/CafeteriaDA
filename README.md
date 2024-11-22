@@ -8,13 +8,14 @@ Este proyecto demuestra un sistema de inicio de sesión simple con vistas basada
 - Vistas basadas en roles para Admin, Cajero y Mesero
 - Tailwind CSS para el estilo
 - TypeScript para la seguridad de tipos
-- Backend con Axios en cs
+- Backend con Axios en cs implementando Swagger
 
 ## Comenzando
 
 1. Clona el repositorio
 2. Instala las dependencias: `npm install`
 3. Ejecuta el servidor de desarrollo: `npm run dev`
+4. Ejecuta el servidor del Backend
 
 ## Uso
 
@@ -27,7 +28,7 @@ Este proyecto demuestra un sistema de inicio de sesión simple con vistas basada
 
 ## DB
 
-Necesitaras la siguiente base de datos en MySQL para que funcione la conexion con los endpoints y el funcionamiento de la aplicacion:
+Necesitaras la siguiente base de datos en MySQL o importar la que se encuentra dentro del repositorio para que funcione la conexion con los endpoints y el funcionamiento de la aplicacion:
 
 ```typescript
 DROP DATABASE IF EXISTS Cafeteria;
@@ -188,7 +189,7 @@ SELECT * FROM facturas;
 ```
 
 # Método GetMesas con Algoritmo de Ordenamiento Burbuja
-
+<!-- MesasController -->
 Descripción: Este método obtiene una lista de mesas de una sede específica y las ordena por el número de mesa utilizando el algoritmo de ordenamiento burbuja.
 
 Partes del Código:
@@ -256,16 +257,172 @@ Partes del Código:
         }
 
 ```
-# Por qué es un Algoritmo Voraz
-El algoritmo es voraz porque en cada paso selecciona el producto que maximiza el beneficio inmediato, definido como el precio del producto. Este enfoque asegura que se utilice el presupuesto de la manera más eficiente posible.
-1.	Ordenar los productos por beneficio (precio) en orden descendente: El algoritmo primero ordena los productos disponibles por su precio en orden descendente. Esto significa que los productos más caros, que ofrecen el mayor beneficio por unidad, se consideran primero.
-2.	Seleccionar los productos en ese orden y agregarlos al pedido hasta que se agote el presupuesto: Luego, el algoritmo recorre la lista de productos ordenados y selecciona tantos como sea posible sin exceder el presupuesto disponible. Para cada producto, calcula cuántas unidades se pueden comprar con el presupuesto restante. Si se puede comprar al menos una unidad, se crea un detalle de pedido para ese producto y se actualiza el presupuesto restante.
-Este proceso se repite hasta que el presupuesto se agota o no se pueden comprar más productos. Al tomar decisiones basadas en el beneficio inmediato en cada paso, el algoritmo cumple con la definición de un algoritmo voraz.
-```typescript
-[HttpPost("{mesaId}/productos")]
+# Algoritmo de Búsqueda en Profundidad (DFS)
+<!-- MesasView -->
+DFS: Definimos el algoritmo de búsqueda en profundidad para recorrer una estructura de datos.
+Contar Estados de Mesas: Creamos una función contarEstadosMesas que usa DFS para contar cuántas mesas están ocupadas y cuántas están disponibles.
+Integrar la Función en useEffect: Llamamos a contarEstadosMesas en el useEffect para contar los estados de las mesas cada vez que se actualizan.
+Mostrar Estado de Mesas: Integramos el componente EstadoMesas en el renderizado de MesasView y le pasamos los estados ocupadas y disponibles.
 
+```typescript
+    const dfs = (graph: Record<number, number[]>, start: number): number[] => {
+        const stack = [start];
+        const visited: Set<number> = new Set();
+        const result: number[] = [];
+    
+        while (stack.length > 0) {
+            const node = stack.pop();
+            if (node !== undefined && !visited.has(node)) {
+                visited.add(node);
+                result.push(node);
+                const neighbors = graph[node];
+                for (let i = neighbors.length - 1; i >= 0; i--) {
+                    stack.push(neighbors[i]);
+                }
+            }
+        }
+    
+        return result;
+    };
+    const contarEstadosMesas = () => {
+        const graph: Record<number, number[]> = {};
+        mesas.forEach(mesa => {
+            graph[mesa.id] = mesas.filter(m => m.id !== mesa.id).map(m => m.id);
+        });
+    
+        const recorrido = dfs(graph, mesas[0]?.id || 0);
+        let ocupadas = 0;
+        let disponibles = 0;
+    
+        recorrido.forEach(id => {
+            const mesa = mesas.find(m => m.id === id);
+            if (mesa?.estado === 'Ocupada') {
+                ocupadas++;
+            } else if (mesa?.estado === 'Disponible') {
+                disponibles++;
+            }
+        });
+    
+        setOcupadas(ocupadas);
+        setDisponibles(disponibles);
+    };
+    useEffect(() => {
+        if (mesas.length > 0) {
+            contarEstadosMesas();
+        }
+    }, [mesas]);
 ```
-         
+
+
+# Algoritmo de ordenamiento
+<!-- MesasView -->
+El método quickSort es un algoritmo de ordenamiento eficiente que sigue el paradigma de "divide y vencerás". Aquí está el código del método:
+
+Explicación del Algoritmo
+Caso Base:
+
+Si el arreglo tiene uno o cero elementos, ya está ordenado, por lo que se devuelve tal cual.
+Elección del Pivote:
+
+Se selecciona un elemento del arreglo como pivote. En este caso, se elige el elemento del medio (arr[Math.floor(arr.length / 2)]).
+División del Arreglo:
+
+Se divide el arreglo en dos subarreglos:
+left: Contiene los elementos que son menores que el pivote.
+right: Contiene los elementos que son mayores que el pivote.
+Recursión:
+
+Se aplica el mismo proceso recursivamente a los subarreglos left y right.
+Combinación:
+
+Finalmente, se combinan los subarreglos ordenados y el pivote para formar el arreglo ordenado final.
+
+```typescript
+
+    const quickSort = (arr: Producto[]): Producto[] => {
+        if (arr.length <= 1) return arr;
+        const pivot = arr[Math.floor(arr.length / 2)];
+        const left = arr.filter(x => x.precio < pivot.precio);
+        const right = arr.filter(x => x.precio > pivot.precio);
+        return [...quickSort(left), pivot, ...quickSort(right)];
+    };
+
+    const fetchProductos = async () => {
+        try {
+            const response = await axios.get(`https://192.168.1.2:7096/api/Producto/sede/${sedeId}`);
+            const sortedProductos = quickSort(response.data);
+            setProductos(sortedProductos);
+        } catch (error) {
+            console.error("Error al obtener los productos:", error);
+        }
+    };
+```
+
+# Algoritmo de busqueda binaria}
+<!-- MesasView -->
+
+```typescript
+const binarySearch = (arr: string[], target: string): number => {
+        let left = 0;
+        let right = arr.length - 1;
+
+        while (left <= right) {
+            const mid = Math.floor((left + right) / 2);
+            if (arr[mid] === target) {
+                return mid;
+            } else if (arr[mid] < target) {
+                left = mid + 1;
+            } else {
+                right = mid - 1;
+            }
+        }
+
+        return -1; // Elemento no encontrado
+    };
+```
+
+```typescript
+<input
+    type="text"
+    placeholder="Buscar producto por nombre"
+    value={searchTerm}
+    onChange={(e) => setSearchTerm(e.target.value)}
+    className="mt-4 p-2 border rounded"
+/>
+<div className="flex flex-col gap-4 max-h-80 overflow-y-auto">
+    {filteredProductos.length > 0 ? (
+        filteredProductos.map((producto) => (
+            <div key={producto.id} className="p-4 border rounded shadow">
+                <h3 className="font-bold">{producto.nombre}</h3>
+                <p>Precio: ${producto.precio.toFixed(2)}</p>
+                <p>{producto.descripcion}</p>
+                <button
+                    className="mt-2 p-2 bg-blue-500 text-white rounded"
+                    onClick={() => agregarProductoPedido(producto)}
+                >
+                    Agregar al pedido
+                </button>
+            </div>
+        ))
+    ) : (
+        <p>No se encontraron productos.</p>
+    )}
+</div>
+```
+
+# Algoritmo AES (Advanced Encryption Standard)
+
+Se encuentra en CustomEncryptor.cs en el backend
+La clave se genera con SHA-256 (32 bytes) y el IV con MD5 (16 bytes).
+
+Cifrado: El texto se cifra en bloques, se rellena si es necesario (PKCS7), y se convierte a Base64.
+Descifrado: El texto cifrado se vuelve a convertir a su forma original usando la misma clave y IV.
+Lo hace seguro por:
+
+AES es un cifrado fuerte.
+CBC evita patrones en el texto cifrado.
+Clave e IV se generan dinámicamente, lo que evita valores predecibles.
+       
 > [!CAUTION]
 > Advises about risks or negative outcomes of certain actions.
 
