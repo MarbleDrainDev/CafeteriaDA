@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 
 interface MeseroViewProps {
   onLogout: () => void;
+  idMesero: number;
 }
 
 const MeseroView: React.FC<MeseroViewProps> = ({ onLogout }) => {

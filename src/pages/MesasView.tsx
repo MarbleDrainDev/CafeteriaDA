@@ -18,6 +18,7 @@ interface DetallePedido {
     cantidad: number;
     precio_unitario: number;
     subtotal: number;
+    detalle?: string;
 }
 interface Pedido {
     id: number | null;
@@ -36,12 +37,16 @@ const MesasView = () => {
     const [selectedMesaId, setSelectedMesaId] = useState<number | null>(null);
     const navigate = useNavigate();
     const sedeId = Number(localStorage.getItem("sedeId"));
-    const meseroId = parseInt(localStorage.getItem("meseroId") || "0", 10); // Convertir a número y verificar si es válido
+    const meseroId = parseInt(localStorage.getItem("meseroId") || "1", 10); // Convertir a número y verificar si es válido
+
+    const [isDetalleModalOpen, setIsDetalleModalOpen] = useState(false);
+    const [detalleTexto, setDetalleTexto] = useState("");
+    const [detalleIndex, setDetalleIndex] = useState<number | null>(null);
+    
     useEffect(() => {
         const connection = new signalR.HubConnectionBuilder()
-            .withUrl("https://192.168.0.6:7096/mesahub")
+            .withUrl("https://192.168.1.2:7096/mesahub")
             .build();
-
         connection.on("mesasActualizadas", (nuevasMesas: Mesa[]) => {
             setMesas(nuevasMesas);
         });
@@ -63,30 +68,96 @@ const MesasView = () => {
             console.error("sedeId no es válido");
         }
     }, [sedeId]);
+
+    
+    const openDetalleModal = (index: number) => {
+        if (pedidoActual && pedidoActual.detalles && index >= 0 && index < pedidoActual.detalles.length) {
+            setDetalleIndex(index);
+            setDetalleTexto(pedidoActual.detalles[index]?.detalle || ""); // Cargar texto si ya existe
+            setIsDetalleModalOpen(true);
+        } else {
+            console.error("Índice inválido o pedidoActual no está definido.");
+        }
+    };
+    
+    const closeDetalleModal = () => {
+        setDetalleIndex(null);
+        setDetalleTexto("");
+        setIsDetalleModalOpen(false);
+    };
+
+    const guardarDetalle = () => {
+        if (detalleIndex !== null && detalleTexto.trim() !== "" && pedidoActual && pedidoActual.detalles) {
+            const updatedDetalles = [...pedidoActual.detalles];
+            if (detalleIndex >= 0 && detalleIndex < updatedDetalles.length) {
+                updatedDetalles[detalleIndex] = {
+                    ...updatedDetalles[detalleIndex],
+                    detalle: detalleTexto,
+                };
+    
+                setPedidoActual({
+                    ...pedidoActual,
+                    detalles: updatedDetalles,
+                } as Pedido); // Asegúrate de que el objeto cumple con el tipo Pedido
+            } else {
+                console.error("Índice de detalle inválido.");
+            }
+        } else {
+            console.error("Datos inválidos para guardar el detalle.");
+        }
+        closeDetalleModal();
+    };
+
+    const actualizarStockProductos = async () => {
+        if (!pedidoActual || !pedidoActual.detalles) {
+            console.error("No hay detalles de pedido para actualizar el stock.");
+            return;
+        }
+    
+        try {
+            const cambiosStock = pedidoActual.detalles.map((detalle) => {
+                console.log(`Producto ID: ${detalle.id_producto}, Cantidad: ${detalle.cantidad}`);
+                return {
+                    IdProducto: detalle.id_producto,
+                    Cantidad: detalle.cantidad,
+                };
+            });
+    
+            console.log("Datos enviados:", cambiosStock);
+    
+            await axios.post('https://192.168.1.2:7096/api/Producto/actualizar-stock', cambiosStock);
+        } catch (error) {
+            console.error("Error al actualizar el stock:", error);
+            alert("No se pudo actualizar el stock de los productos.");
+        }
+    };
     const fetchMesas = async () => {
         try {
-            const response = await axios.get(`https://192.168.0.6:7096/api/Mesa?sedeId=${sedeId}`);
+            const response = await axios.get(`https://192.168.1.2:7096/api/Mesa?sedeId=${sedeId}`);
             setMesas(response.data);
         } catch (error) {
             console.error("Error al obtener las mesas", error);
+            alert("No se pudo obtener las mesas.");
         }
     };
     const fetchProductos = async () => {
         try {
-            const response = await axios.get(`https://192.168.0.6:7096/api/Producto/sede/${sedeId}`);
+            const response = await axios.get(`https://192.168.1.2:7096/api/Producto/sede/${sedeId}`);
             setProductos(response.data);
         } catch (error) {
             console.error("Error al obtener los productos", error);
+            alert("No se pudo obtener los productos.");
         }
     };
     const fetchPedidoMesa = async (mesaId: number) => {
         try {
-            const response = await axios.get(`https://192.168.0.6:7096/api/Mesa/${mesaId}/pedido`);
+            const response = await axios.get(`https://192.168.1.2:7096/api/Mesa/${mesaId}/pedido`);
             const { pedido, detalles } = response.data; 
             const pedidoCompleto = { ...pedido, detalles };
             setPedidoActual(pedidoCompleto);
         } catch (error) {
             console.error("Error al obtener el pedido", error);
+            // alert("No se pudo obtener el pedido de la mesa.");
         }
     };
     const handleMesaClick = async (mesa: Mesa) => {
@@ -151,32 +222,30 @@ const MesasView = () => {
                 return;
             }
             try {
+                const detallesConDetalle = pedidoActual.detalles.map((detalle) => ({
+                    idProducto: detalle.id_producto,
+                    cantidad: detalle.cantidad,
+                    precioUnitario: detalle.precio_unitario,
+                    detalles: detalle.detalle || "",
+                }));
+    
+                const pedidoRequest = {
+                    idMesero: pedidoActual.id_mesero,
+                    idCajero: pedidoActual.id_cajero,
+                    idMesa: selectedMesaId,
+                    detalles: detallesConDetalle,
+                };
+    
                 if (pedidoActual.id) {
-                    // Update existing order
-                    await axios.put(`https://192.168.0.6:7096/api/mesa/${selectedMesaId}/actualizar`, {
-                        IdMesero: pedidoActual.id_mesero,
-                        IdCajero: pedidoActual.id_cajero,
-                        Detalles: pedidoActual.detalles.map(detalle => ({
-                            IdProducto: detalle.id_producto,
-                            Cantidad: detalle.cantidad,
-                            PrecioUnitario: detalle.precio_unitario
-                        }))
-                    });
+                    await axios.put(`https://192.168.1.2:7096/api/mesa/${selectedMesaId}/actualizar`, pedidoRequest);
                     alert("Pedido actualizado exitosamente");
                 } else {
-                    // Create new order
-                    await axios.post('https://192.168.0.6:7096/api/mesa/pedido', {
-                        IdMesero: pedidoActual.id_mesero,
-                        IdCajero: pedidoActual.id_cajero,
-                        IdMesa: pedidoActual.id_mesa,
-                        Detalles: pedidoActual.detalles.map(detalle => ({
-                            IdProducto: detalle.id_producto,
-                            Cantidad: detalle.cantidad,
-                            PrecioUnitario: detalle.precio_unitario
-                        }))
-                    });
+                    await axios.post('https://192.168.1.2:7096/api/mesa/pedido', pedidoRequest);
                     alert("Pedido guardado exitosamente");
                 }
+    
+                // Actualizar el stock después de guardar el pedido
+                await actualizarStockProductos();
                 closeModal();
             } catch (error) {
                 if (axios.isAxiosError(error)) {
@@ -189,11 +258,14 @@ const MesasView = () => {
             }
         }
     };
+    
+    
+     
     const eliminarProductoDetalle = async (idPedido: number, idProducto: number) => {
         console.log(`Intentando eliminar el producto con ID: ${idProducto} del pedido con ID: ${idPedido}`);
         try {
             // Realiza la solicitud DELETE al endpoint correspondiente
-            await axios.delete(`https://192.168.0.6:7096/api/mesa/${idPedido}/detalle/${idProducto}`);    
+            await axios.delete(`https://192.168.1.2:7096/api/mesa/${idPedido}/detalle/${idProducto}`);    
             // Actualiza el pedido después de eliminar el producto
             if (pedidoActual) {
                 const nuevosDetalles = pedidoActual.detalles.map(detalle => {
@@ -245,7 +317,7 @@ const MesasView = () => {
     // Función para actualizar el estado de la mesa
     const actualizarEstadoMesa = async (idMesa: number, nuevoEstado: string) => {
         try {
-            await axios.put(`https://192.168.0.6:7096/api/mesa/${idMesa}/estado`, { estado: nuevoEstado });
+            await axios.put(`https://192.168.1.2:7096/api/mesa/${idMesa}/estado`, { estado: nuevoEstado });
             console.log(`Estado de la mesa ${idMesa} actualizado a "${nuevoEstado}"`);
         } catch (error) {
             console.error("Error al actualizar el estado de la mesa", error);
@@ -345,6 +417,14 @@ const MesasView = () => {
                                                 >
                                                     Eliminar
                                                 </button>
+
+                                                <button
+                                                    className="mt-2 ml-2 p-2 bg-yellow-500 text-white rounded"
+                                                    onClick={() => openDetalleModal(index)}
+                                                >
+                                                    Agregar Detalles
+                                                </button>
+
                                             </div>
                                         ))
                                     ) : (
@@ -372,6 +452,35 @@ const MesasView = () => {
                     </div>
                 </div>
             )}
+            {isDetalleModalOpen && (
+                <div className="fixed inset-0 flex items-center justify-center z-50 bg-black bg-opacity-50">
+                    <div className="bg-white p-6 rounded shadow-lg max-w-lg w-full">
+                        <h3 className="text-xl font-bold mb-4">Agregar Detalles</h3>
+                        <textarea
+                            className="w-full p-2 border rounded mb-4"
+                            rows="5"
+                            placeholder="Escribe los detalles del producto aquí..."
+                            value={detalleTexto}
+                            onChange={(e) => setDetalleTexto(e.target.value)}
+                        />
+                        <div className="flex justify-end gap-4">
+                            <button
+                                onClick={guardarDetalle}
+                                className="bg-green-500 text-white px-4 py-2 rounded"
+                            >
+                                Guardar
+                            </button>
+                            <button
+                                onClick={closeDetalleModal}
+                                className="bg-red-500 text-white px-4 py-2 rounded"
+                            >
+                                Cancelar
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            )}
+
         </div>
     );
 };

@@ -46,7 +46,7 @@ const MesasView = () => {
 
     useEffect(() => {
         const connection = new signalR.HubConnectionBuilder()
-            .withUrl("https://192.168.0.6:7096/mesahub")
+            .withUrl("https://192.168.1.2:7096/mesahub")
             .build();
 
         connection.on("mesasActualizadas", (nuevasMesas: Mesa[]) => {
@@ -74,7 +74,7 @@ const MesasView = () => {
 
     const fetchMesas = async () => {
         try {
-            const response = await axios.get(`https://192.168.0.6:7096/api/Mesa?sedeId=${sedeId}`);
+            const response = await axios.get(`https://192.168.1.2:7096/api/Mesa?sedeId=${sedeId}`);
             setMesas(response.data);
         } catch (error) {
             console.error("Error al obtener las mesas", error);
@@ -83,7 +83,7 @@ const MesasView = () => {
 
     const fetchProductos = async () => {
         try {
-            const response = await axios.get(`https://192.168.0.6:7096/api/Producto/sede/${sedeId}`);
+            const response = await axios.get(`https://192.168.1.2:7096/api/Producto/sede/${sedeId}`);
             setProductos(response.data);
         } catch (error) {
             console.error("Error al obtener los productos", error);
@@ -92,7 +92,7 @@ const MesasView = () => {
 
     const fetchPedidoMesa = async (mesaId: number) => {
         try {
-            const response = await axios.get(`https://192.168.0.6:7096/api/Mesa/${mesaId}/pedido`);
+            const response = await axios.get(`https://192.168.1.2:7096/api/Mesa/${mesaId}/pedido`);
             const { pedido, detalles } = response.data;
             const pedidoCompleto = { ...pedido, detalles };
             setPedidoActual(pedidoCompleto);
@@ -157,7 +157,7 @@ const MesasView = () => {
             }
             try {
                 if (pedidoActual.id) {
-                    await axios.put(`https://192.168.0.6:7096/api/mesa/${selectedMesaId}/actualizar`, {
+                    await axios.put(`https://192.168.1.2:7096/api/mesa/${selectedMesaId}/actualizar`, {
                         IdMesero: pedidoActual.id_mesero,
                         IdCajero: pedidoActual.id_cajero,
                         Detalles: pedidoActual.detalles.map(detalle => ({
@@ -168,7 +168,7 @@ const MesasView = () => {
                     });
                     alert("Pedido actualizado exitosamente");
                 } else {
-                    await axios.post('https://192.168.0.6:7096/api/mesa/pedido', {
+                    await axios.post('https://192.168.1.2:7096/api/mesa/pedido', {
                         IdMesero: pedidoActual.id_mesero,
                         IdCajero: pedidoActual.id_cajero,
                         IdMesa: pedidoActual.id_mesa,
@@ -198,7 +198,7 @@ const MesasView = () => {
     const generarFactura = async () => {
       if (pedidoActual) {
           try {
-              const response = await axios.post(`https://192.168.0.6:7096/api/Mesa/${pedidoActual.id}/generarFactura`, {}, { responseType: 'blob' });
+              const response = await axios.post(`https://192.168.1.2:7096/api/Mesa/${pedidoActual.id}/generarFactura`, {}, { responseType: 'blob' });
               const blob = new Blob([response.data], { type: 'application/txt' });
               const link = document.createElement('a');
               link.href = URL.createObjectURL(blob);
