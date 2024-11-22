@@ -1,6 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
+import { LucideIcon } from 'lucide-react';
+import {Plus, Edit, Trash} from 'lucide-react';
+
 
 interface Role {
     id: number;
@@ -212,156 +215,157 @@ const RolesView = () => {
     };
 
     return (
-        <div className="p-4">
-            <h2 className="text-2xl font-bold mb-4">Gestión de Roles</h2>
-            <div className="mb-4">
-                <input
-                    type="text"
-                    value={newRole}
-                    onChange={(e) => setNewRole(e.target.value)}
-                    placeholder="Nombre del nuevo rol"
-                    className="border rounded p-2 mr-2"
-                />
-                <button
-                    onClick={handleAddRole}
-                    className="bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600"
-                >
-                    Agregar Rol
-                </button>
+        <div className="p-4 bg-gradient-to-r from-blue-100 to-blue-300 min-h-screen">
+            <h2 className="text-3xl font-bold mb-6 text-blue-900">Gestión de Roles</h2>
+            <div className="mb-6 flex items-center">
+            <input
+                type="text"
+                value={newRole}
+                onChange={(e) => setNewRole(e.target.value)}
+                placeholder="Nombre del nuevo rol"
+                className="border rounded p-2 mr-2 flex-grow"
+            />
+            <button
+                onClick={handleAddRole}
+                className="bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600 flex items-center"
+            >
+            <Plus className="mr-2" /> Agregar Rol
+            </button>
             </div>
-            <div className="flex flex-wrap gap-4 mb-4">
-                {roles.length > 0 ? (
-                    roles.map((role) => (
-                        <div key={role.id} className="p-4 border rounded shadow">
-                            <h3 className="font-bold">{role.nombre}</h3>
-                            <input
-                                type="text"
-                                placeholder="Nuevo nombre"
-                                className="border rounded p-1 mr-2"
-                                onChange={(e) => setEditRoleName(e.target.value)}
-                            />
-                            <button
-                                onClick={() => handleEditRole(role.id)}
-                                className="mt-2 p-2 bg-blue-500 text-white rounded hover:bg-blue-600"
-                            >
-                                Editar
-                            </button>
-                            <button
-                                onClick={() => handleDeleteRole(role.id)}
-                                className="mt-2 p-2 bg-red-500 text-white rounded hover:bg-red-600"
-                            >
-                                Eliminar
-                            </button>
-                        </div>
-                    ))
-                ) : (
-                    <p>No hay roles disponibles.</p>
-                )}
-            </div>
-
-            <h2 className="text-2xl font-bold mb-4">Gestión de Usuarios</h2>
-            <div className="mb-4">
-                <input
+            <div className="flex flex-wrap gap-4 mb-6">
+            {roles.length > 0 ? (
+                roles.map((role) => (
+                <div key={role.id} className="p-4 border rounded shadow bg-white w-64">
+                    <h3 className="font-bold text-blue-800">{role.nombre}</h3>
+                    <input
                     type="text"
-                    value={newUser.nombre}
-                    onChange={(e) => setNewUser({ ...newUser, nombre: e.target.value })}
-                    placeholder="Nombre"
-                    className="border rounded p-2 mr-2"
-                />
-                <input
-                    type="email"
-                    value={newUser.email}
-                    onChange={(e) => setNewUser({ ...newUser, email: e.target.value })}
-                    placeholder="Email"
-                    className="border rounded p-2 mr-2"
-                />
-                <input
-                    type="password"
-                    value={newUser.password}
-                    onChange={(e) => setNewUser({ ...newUser, password: e.target.value })}
-                    placeholder="Contraseña"
-                    className="border rounded p-2 mr-2"
-                />
-                <select
-                    value={newUser.rolId}
-                    onChange={(e) => setNewUser({ ...newUser, rolId: Number(e.target.value) })}
-                    className="border rounded p-2 mr-2"
-                >
-                    <option value={0}>Selecciona un rol</option>
-                    {roles.map((role) => (
-                        <option key={role.id} value={role.id}>
-                            {role.nombre}
-                        </option>
-                    ))}
-                </select>
-                {newUser.rolId !== 1 && (
-                    <select
-                        value={newUser.sedeId}
-                        onChange={(e) => setNewUser({ ...newUser, sedeId: Number(e.target.value) })}
-                        className="border rounded p-2 mr-2"
+                    placeholder="Nuevo nombre"
+                    className="border rounded p-1 mr-2 mt-2 w-full"
+                    onChange={(e) => setEditRoleName(e.target.value)}
+                    />
+                    <button
+                    onClick={() => handleEditRole(role.id)}
+                    className="mt-2 p-2 bg-blue-500 text-white rounded hover:bg-blue-600 w-full flex items-center justify-center"
                     >
-                        <option value={0}>Selecciona una sede</option>
-                        {sedes.map((sede) => (
-                            <option key={sede.id} value={sede.id}>
-                                {sede.nombre}
-                            </option>
-                        ))}
-                    </select>
-                )}
-                <button
-                    onClick={editingUser ? handleUpdateUser : handleRegisterUser}
-                    className="bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600"
-                >
-                    {editingUser ? 'Actualizar Usuario' : 'Registrar Usuario'}
-                </button>
+                    <Edit className="mr-2" /> Editar
+                    </button>
+                    <button
+                    onClick={() => handleDeleteRole(role.id)}
+                    className="mt-2 p-2 bg-red-500 text-white rounded hover:bg-red-600 w-full flex items-center justify-center"
+                    >
+                    <Trash className="mr-2" /> Eliminar
+                    </button>
+                </div>
+                ))
+            ) : (
+                <p>No hay roles disponibles.</p>
+            )}
             </div>
 
-            <div className="mb-4">
-                {usuarios.length > 0 ? (
-                    <table className="table-auto w-full">
-                        <thead>
-                            <tr>
-                                <th className="px-4 py-2">Nombre</th>
-                                <th className="px-4 py-2">Email</th>
-                                <th className="px-4 py-2">Rol</th>
-                                <th className="px-4 py-2">Sede</th>
-                                <th className="px-4 py-2">Acciones</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            {usuarios.map((usuario) => (
-                                <tr key={usuario.id}>
-                                    <td className="border px-4 py-2">{usuario.nombre}</td>
-                                    <td className="border px-4 py-2">{usuario.email}</td>
-                                    <td className="border px-4 py-2">{getRolNombre(usuario.rolId)}</td>
-                                    <td className="border px-4 py-2">{getSedeNombre(usuario.sedeId) || 'No asignada'}</td>
-                                    <td className="border px-4 py-2">
-                                        <button
-                                            onClick={() => handleEditUser(usuario)}
-                                            className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 mr-2"
-                                        >
-                                            Editar
-                                        </button>
-                                        <button
-                                            onClick={() => handleDeleteUser(usuario.id)}
-                                            className="bg-red-500 text-white px-4 py-2 rounded hover:bg-red-600"
-                                        >
-                                            Eliminar
-                                        </button>
-                                    </td>
-                                </tr>
-                            ))}
-                        </tbody>
-                    </table>
-                ) : (
-                    <p>No hay usuarios disponibles.</p>
-                )}
+            <h2 className="text-3xl font-bold mb-6 text-blue-900">Gestión de Usuarios</h2>
+            <div className="mb-6 flex flex-wrap items-center gap-2">
+            <input
+                type="text"
+                value={newUser.nombre}
+                onChange={(e) => setNewUser({ ...newUser, nombre: e.target.value })}
+                placeholder="Nombre"
+                className="border rounded p-2 flex-grow"
+            />
+            <input
+                type="email"
+                value={newUser.email}
+                onChange={(e) => setNewUser({ ...newUser, email: e.target.value })}
+                placeholder="Email"
+                className="border rounded p-2 flex-grow"
+            />
+            <input
+                type="password"
+                value={newUser.password}
+                onChange={(e) => setNewUser({ ...newUser, password: e.target.value })}
+                placeholder="Contraseña"
+                className="border rounded p-2 flex-grow"
+            />
+            <select
+                value={newUser.rolId}
+                onChange={(e) => setNewUser({ ...newUser, rolId: Number(e.target.value) })}
+                className="border rounded p-2 flex-grow"
+            >
+                <option value={0}>Selecciona un rol</option>
+                {roles.map((role) => (
+                <option key={role.id} value={role.id}>
+                    {role.nombre}
+                </option>
+                ))}
+            </select>
+            {newUser.rolId !== 1 && (
+                <select
+                value={newUser.sedeId}
+                onChange={(e) => setNewUser({ ...newUser, sedeId: Number(e.target.value) })}
+                className="border rounded p-2 flex-grow"
+                >
+                <option value={0}>Selecciona una sede</option>
+                {sedes.map((sede) => (
+                    <option key={sede.id} value={sede.id}>
+                    {sede.nombre}
+                    </option>
+                ))}
+                </select>
+            )}
+            <button
+                onClick={editingUser ? handleUpdateUser : handleRegisterUser}
+                className="bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600 flex items-center"
+            >
+                <i className={`lucide ${editingUser ? 'lucide-save' : 'lucide-user-plus'} mr-2`}></i>
+                {editingUser ? 'Actualizar Usuario' : 'Registrar Usuario'}
+            </button>
+            </div>
+
+            <div className="mb-6">
+            {usuarios.length > 0 ? (
+                <table className="table-auto w-full bg-white rounded shadow">
+                <thead className="bg-blue-500 text-white">
+                    <tr>
+                    <th className="px-4 py-2">Nombre</th>
+                    <th className="px-4 py-2">Email</th>
+                    <th className="px-4 py-2">Rol</th>
+                    <th className="px-4 py-2">Sede</th>
+                    <th className="px-4 py-2">Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {usuarios.map((usuario) => (
+                    <tr key={usuario.id} className="hover:bg-blue-100">
+                        <td className="border px-4 py-2">{usuario.nombre}</td>
+                        <td className="border px-4 py-2">{usuario.email}</td>
+                        <td className="border px-4 py-2">{getRolNombre(usuario.rolId)}</td>
+                        <td className="border px-4 py-2">{getSedeNombre(usuario.sedeId) || 'No asignada'}</td>
+                        <td className="border px-4 py-2 flex justify-center">
+                        <button
+                            onClick={() => handleEditUser(usuario)}
+                            className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 mr-2 flex items-center"
+                        >
+                            <i className="lucide lucide-edit mr-2"></i> Editar
+                        </button>
+                        <button
+                            onClick={() => handleDeleteUser(usuario.id)}
+                            className="bg-red-500 text-white px-4 py-2 rounded hover:bg-red-600 flex items-center"
+                        >
+                            <i className="lucide lucide-trash mr-2"></i> Eliminar
+                        </button>
+                        </td>
+                    </tr>
+                    ))}
+                </tbody>
+                </table>
+            ) : (
+                <p>No hay usuarios disponibles.</p>
+            )}
             </div>
             <button
-                onClick={() => navigate(-1)}
-                className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 mt-4"
+            onClick={() => navigate(-1)}
+            className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 mt-4 flex items-center"
             >
-                Regresar
+            <i className="lucide lucide-arrow-left mr-2"></i> Regresar
             </button>
         </div>
     );

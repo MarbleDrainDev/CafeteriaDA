@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
+import { Plus, Edit, Trash, Save } from 'lucide-react';
 
 interface Sede {
     id: number;
@@ -78,66 +79,67 @@ const SedesView: React.FC = () => {
     }, []);
 
     return (
-        <div className="p-4">
-            <h2 className="text-2xl font-bold mb-4">Gestión de Sedes</h2>
-            <div className="mb-4">
-                <input
-                    type="text"
-                    placeholder="Nombre"
-                    value={nombre}
-                    onChange={(e) => setNombre(e.target.value)}
-                    className="border rounded p-2 mr-2"
-                />
-                <input
-                    type="text"
-                    placeholder="Dirección"
-                    value={direccion}
-                    onChange={(e) => setDireccion(e.target.value)}
-                    className="border rounded p-2 mr-2"
-                />
-                {editingSedeId ? (
-                    <button onClick={handleUpdateSede} className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600">
-                        Actualizar Sede
-                    </button>
-                ) : (
-                    <button onClick={handleAddSede} className="bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600">
-                        Agregar Sede
-                    </button>
-                )}
+        <div className="p-6 bg-gradient-to-r from-green-400 to-blue-500 min-h-screen text-white">
+            <h2 className="text-3xl font-bold mb-6">Gestión de Sedes</h2>
+            <div className="mb-6">
+            <input
+                type="text"
+                placeholder="Nombre"
+                value={nombre}
+                onChange={(e) => setNombre(e.target.value)}
+                className="border rounded p-3 mr-3 text-black"
+            />
+            <input
+                type="text"
+                placeholder="Dirección"
+                value={direccion}
+                onChange={(e) => setDireccion(e.target.value)}
+                className="border rounded p-3 mr-3 text-black"
+            />
+            {editingSedeId ? (
+                <button onClick={handleUpdateSede} className="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 flex items-center">
+                <Save className="mr-2" /> Actualizar Sede
+
+                </button>
+            ) : (
+                <button onClick={handleAddSede} className="bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700 flex items-center">
+                    <Plus className="mr-2" /> Agregar Sede
+                </button>
+            )}
             </div>
-            <div className="flex flex-wrap gap-4 mb-4">
-                {sedes.length > 0 ? (
-                    sedes.map((sede) => (
-                        <div key={sede.id} className="p-4 border rounded shadow flex justify-between items-center">
-                            <div>
-                                <h3 className="font-bold">{sede.nombre}</h3>
-                                <p>{sede.direccion}</p>
-                            </div>
-                            <div>
-                                <button
-                                    onClick={() => handleEditSede(sede)}
-                                    className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 mt-4"
-                                >
-                                    Editar
-                                </button>
-                                <button
-                                    onClick={() => handleDeleteSede(sede.id)}
-                                    className="mt-2 p-2 bg-red-500 text-white rounded hover:bg-red-600"
-                                >
-                                    Eliminar
-                                </button>
-                            </div>
-                        </div>
-                    ))
-                ) : (
-                    <p>No se encontraron sedes.</p>
-                )}
+            <div className="flex flex-wrap gap-6 mb-6">
+            {sedes.length > 0 ? (
+                sedes.map((sede) => (
+                <div key={sede.id} className="p-4 border rounded shadow-lg bg-white text-black flex justify-between items-center w-full md:w-1/2 lg:w-1/3">
+                    <div>
+                    <h3 className="font-bold text-lg">{sede.nombre}</h3>
+                    <p>{sede.direccion}</p>
+                    </div>
+                    <div className="flex flex-col items-end">
+                    <button
+                        onClick={() => handleEditSede(sede)}
+                        className="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 flex items-center mb-2"
+                    >
+                        <Edit className="mr-2" /> Editar
+                    </button>
+                    <button
+                        onClick={() => handleDeleteSede(sede.id)}
+                        className="bg-red-600 text-white px-4 py-2 rounded hover:bg-red-700 flex items-center"
+                    >
+                        <Trash className="mr-2" /> Eliminar
+                    </button>
+                    </div>
+                </div>
+                ))
+            ) : (
+                <p>No se encontraron sedes.</p>
+            )}
             </div>
             <button
-                onClick={() => navigate(-1)}
-                className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 mt-4"
+            onClick={() => navigate(-1)}
+            className="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 flex items-center"
             >
-                Regresar
+            <i className="fas fa-arrow-left mr-2"></i> Regresar
             </button>
         </div>
     );

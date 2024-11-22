@@ -3,7 +3,10 @@ import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import * as signalR from '@microsoft/signalr';
 
-
+interface CajeroViewProps {
+    onLogout: () => void;
+    idMesero: number;
+  }
 interface Mesa {
     id: number;
     numero_mesa: number;
@@ -34,7 +37,8 @@ interface Pedido {
     detalles: DetallePedido[];
 }
 
-const MesasView = () => {
+
+const MesasView: React.FC<CajeroViewProps> = ({ onLogout }) => {
     const [mesas, setMesas] = useState<Mesa[]>([]);
     const [productos, setProductos] = useState<Producto[]>([]);
     const [pedidoActual, setPedidoActual] = useState<Pedido | null>(null);
@@ -216,107 +220,107 @@ const MesasView = () => {
   
 
     return (
-        <div className="p-4">
-            <h2 className="text-2xl font-bold mb-4">Mesas de la Sede {sedeId}</h2>
+        <div className="p-4 bg-gradient-to-r from-blue-500 to-purple-500 min-h-screen">
+            <h2 className="text-3xl font-bold mb-6 text-white">Mesas de la Sede {sedeId}</h2>
             <div className="flex flex-wrap gap-4">
-                {mesas.length > 0 ? (
-                    mesas.map((mesa) => (
-                        <div
-                            key={mesa.id}
-                            className={`p-4 rounded shadow cursor-pointer ${mesa.estado === 'Ocupada' ? 'bg-red-500' : 'bg-green-500'} text-white`}
-                            onClick={() => handleMesaClick(mesa)}
-                        >
-                            <p>Mesa {mesa.numero_mesa}</p>
-                            <p>{mesa.estado}</p>
-                        </div>
-                    ))
-                ) : (
-                    <p>No se encontraron mesas.</p>
-                )}
-                <button
-                    onClick={() => navigate(-1)}
-                    className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600"
+            {mesas.length > 0 ? (
+                mesas.map((mesa) => (
+                <div
+                    key={mesa.id}
+                    className={`p-4 rounded shadow cursor-pointer transform transition-transform duration-300 hover:scale-105 ${mesa.estado === 'Ocupada' ? 'bg-red-600' : 'bg-green-600'} text-white`}
+                    onClick={() => handleMesaClick(mesa)}
                 >
-                    Regresar
-                </button>
+                    <p className="text-lg font-semibold">Mesa {mesa.numero_mesa}</p>
+                    <p>{mesa.estado}</p>
+                </div>
+                ))
+            ) : (
+                <p className="text-white">No se encontraron mesas.</p>
+            )}
+            <button
+                onClick={onLogout}
+                className="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 transition-colors duration-300"
+            >
+                Regresar
+            </button>
             </div>
 
             {isModalOpen && (
-                <div className="fixed inset-0 flex items-center justify-center z-50 bg-black bg-opacity-50">
-                    <div className="bg-white p-6 rounded shadow-lg max-w-2xl w-full">
-                        <h2 className="text-xl font-bold mb-4">Mesa {selectedMesaId}</h2>
-                        <button onClick={closeModal} className="absolute top-2 right-2 text-gray-500">X</button>
+            <div className="fixed inset-0 flex items-center justify-center z-50 bg-black bg-opacity-50">
+                <div className="bg-white p-6 rounded shadow-lg max-w-2xl w-full relative">
+                <h2 className="text-2xl font-bold mb-4">Mesa {selectedMesaId}</h2>
+                <button onClick={closeModal} className="absolute top-2 right-2 text-gray-500 hover:text-gray-700 transition-colors duration-300">X</button>
 
-                        <div className="grid grid-cols-2 gap-4">
-                            <div>
-                                <h3 className="font-bold mb-2">Menú</h3>
-                                <div className="flex flex-col gap-4 max-h-80 overflow-y-auto">
-                                    {productos.length > 0 ? (
-                                        productos.map((producto) => (
-                                            <div key={producto.id} className="p-4 border rounded shadow">
-                                                <h3 className="font-bold">{producto.nombre}</h3>
-                                                <p>Precio: ${producto.precio.toFixed(2)}</p>
-                                                <p>{producto.descripcion}</p>
-                                                
-                                                <button
-                                                    className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600"
-                                                    onClick={() => agregarProductoPedido(producto)}
-                                                >
-                                                    Agregar
-                                                </button>
-                                            </div>
-                                        ))
-                                    ) : (
-                                        <p>No hay productos disponibles.</p>
-                                    )}
-                                </div>
+                <div className="grid grid-cols-2 gap-4">
+                    <div>
+                    <h3 className="font-bold mb-2">Menú</h3>
+                    <div className="flex flex-col gap-4 max-h-80 overflow-y-auto">
+                        {productos.length > 0 ? (
+                        productos.map((producto) => (
+                            <div key={producto.id} className="p-4 border rounded shadow hover:bg-gray-100 transition-colors duration-300">
+                            <h3 className="font-bold">{producto.nombre}</h3>
+                            <p>Precio: ${producto.precio.toFixed(2)}</p>
+                            <p>{producto.descripcion}</p>
+                            
+                            <button
+                                className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 transition-colors duration-300"
+                                onClick={() => agregarProductoPedido(producto)}
+                            >
+                                Agregar
+                            </button>
                             </div>
-                            <div>
-                                <h3 className="font-bold mb-2">Pedido</h3>
-                                <div className="flex flex-col gap-4 max-h-80 overflow-y-auto">
-                                    {pedidoActual && pedidoActual.detalles.length > 0 ? (
-                                        pedidoActual.detalles.map((detalle, index) => (
-                                            <div key={index} className="p-4 border rounded shadow">
-                                                <p>Producto ID: {detalle.id_producto}</p>
-                                                <p>Cantidad: {detalle.cantidad}</p>
-                                                <p>Subtotal: ${detalle.subtotal.toFixed(2)}</p>
-                                            </div>
-                                        ))
-                                    ) : (
-                                        <p>No hay productos en el pedido.</p>
-                                    )}
-                                </div>
-                                {pedidoActual && (
-                                    <p className="mt-4 font-bold">
-                                        Total: ${pedidoActual.total.toFixed(2)}
-                                    </p>
-                                )}
+                        ))
+                        ) : (
+                        <p>No hay productos disponibles.</p>
+                        )}
+                    </div>
+                    </div>
+                    <div>
+                    <h3 className="font-bold mb-2">Pedido</h3>
+                    <div className="flex flex-col gap-4 max-h-80 overflow-y-auto">
+                        {pedidoActual && pedidoActual.detalles.length > 0 ? (
+                        pedidoActual.detalles.map((detalle, index) => (
+                            <div key={index} className="p-4 border rounded shadow hover:bg-gray-100 transition-colors duration-300">
+                            <p>Producto ID: {detalle.id_producto}</p>
+                            <p>Cantidad: {detalle.cantidad}</p>
+                            <p>Subtotal: ${detalle.subtotal.toFixed(2)}</p>
                             </div>
-                        </div>
-
-                        <div className="mt-4 flex justify-between">
-                            <button
-                                onClick={guardarPedido}
-                                className="bg-green-500 text-white p-2 rounded"
-                            >
-                                Guardar Pedido
-                            </button>
-                            <button
-                                onClick={generarFactura}
-                                className="bg-yellow-500 text-white px-4 py-2 rounded hover:bg-yellow-600 ml-4"
-                            >
-                                Generar Factura
-                            </button>
-
-                            <button
-                                onClick={closeModal}
-                                className="mt-4 p-2 bg-red-500 text-white rounded"
-                            >
-                                Cerrar
-                            </button>
-                        </div>
+                        ))
+                        ) : (
+                        <p>No hay productos en el pedido.</p>
+                        )}
+                    </div>
+                    {pedidoActual && (
+                        <p className="mt-4 font-bold">
+                        Total: ${pedidoActual.total.toFixed(2)}
+                        </p>
+                    )}
                     </div>
                 </div>
+
+                <div className="mt-4 flex justify-between">
+                    <button
+                    onClick={guardarPedido}
+                    className="bg-green-500 text-white p-2 rounded hover:bg-green-600 transition-colors duration-300"
+                    >
+                    Guardar Pedido
+                    </button>
+                    <button
+                    onClick={generarFactura}
+                    className="bg-yellow-500 text-white px-4 py-2 rounded hover:bg-yellow-600 transition-colors duration-300 ml-4"
+                    >
+                    Generar Factura
+                    </button>
+
+                    <button
+                    onClick={closeModal}
+                    className="mt-4 p-2 bg-red-500 text-white rounded hover:bg-red-600 transition-colors duration-300"
+                    >
+                    Cerrar
+                    </button>
+                </div>
+                </div>
+            </div>
             )}
         </div>
     );

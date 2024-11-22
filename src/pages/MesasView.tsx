@@ -478,31 +478,30 @@ const MesasView = () => {
         setPedidoActual(null);
     };
     return (
-        <div className="p-4">
-            <h2 className="text-2xl font-bold mb-4">Mesas de la Sede {sedeId}</h2>
+        <div className="p-4 bg-gradient-to-r from-blue-500 to-purple-500 min-h-screen">
+            <h2 className="text-3xl font-bold mb-6 text-white">Mesas de la Sede {sedeId}</h2>
             <div className="flex flex-wrap gap-4">
-                {mesas.length > 0 ? (
-                    mesas.map((mesa) => (
-                        <div
-                            key={mesa.id}
-                            className={`p-4 rounded shadow cursor-pointer ${mesa.estado === 'Ocupada' ? 'bg-red-500' : 'bg-green-500'} text-white`}
-                            onClick={() => handleMesaClick(mesa)}
-                        >
-                            <p>Mesa {mesa.numero_mesa}</p>
-                            <p>{mesa.estado}</p>
-                        </div>
-                    ))
-                ) : (
-                    <p>No se encontraron mesas.</p>
-                )}
-                <button
-                    onClick={() => navigate(-1)}
-                    className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600"
-                    >
-                    Regresar
-                </button>
+            {mesas.length > 0 ? (
+                mesas.map((mesa) => (
+                <div
+                    key={mesa.id}
+                    className={`p-4 rounded shadow-lg cursor-pointer transform transition-transform duration-300 hover:scale-105 ${mesa.estado === 'Ocupada' ? 'bg-red-600' : 'bg-green-600'} text-white`}
+                    onClick={() => handleMesaClick(mesa)}
+                >
+                    <p className="text-lg font-semibold">Mesa {mesa.numero_mesa}</p>
+                    <p className="text-sm">{mesa.estado}</p>
+                </div>
+                ))
+            ) : (
+                <p className="text-white">No se encontraron mesas.</p>
+            )}
+            <button
+                onClick={() => navigate(-1)}
+                className="bg-blue-700 text-white px-4 py-2 rounded hover:bg-blue-800 transition-colors duration-300"
+            >
+                Regresar
+            </button>
 
-            </div>
             {/* <input
                 type="text"
                 placeholder="Buscar producto por nombre"
@@ -529,46 +528,47 @@ const MesasView = () => {
                     <p>No se encontraron productos.</p>
                 )}
             </div> */}
+            </div>
 
             <EstadoMesas ocupadas={ocupadas} disponibles={disponibles} />
 
             {isModalOpen && (
-                <div className="fixed inset-0 flex items-center justify-center z-50 bg-black bg-opacity-50">
-                    <div className="bg-white p-6 rounded shadow-lg max-w-2xl w-full">
-                        <h2 className="text-xl font-bold mb-4">Mesa {selectedMesaId}</h2>
-                        <button onClick={closeModal} className="absolute top-2 right-2 text-gray-500">X</button>
+            <div className="fixed inset-0 flex items-center justify-center z-50 bg-black bg-opacity-50">
+                <div className="bg-white p-6 rounded shadow-lg max-w-2xl w-full relative">
+                <h2 className="text-xl font-bold mb-4">Mesa {selectedMesaId}</h2>
+                <button onClick={closeModal} className="absolute top-2 right-2 text-gray-500 hover:text-gray-700 transition-colors duration-300">X</button>
 
-                        <div className="grid grid-cols-2 gap-4">
-                            <div>
-                                <h3 className="font-bold mb-2">Menú</h3>
-                                {/* Algoritmo de busqueda Binaria */}
-                                <input
-                                    type="text"
-                                    placeholder="Buscar producto por nombre"
-                                    value={searchTerm}
-                                    onChange={(e) => setSearchTerm(e.target.value)}
-                                    className="mt-4 p-2 border rounded"
-                                />
-                                <div className="flex flex-col gap-4 max-h-80 overflow-y-auto">
-                                    {filteredProductos.length > 0 ? (
-                                        filteredProductos.map((producto) => (
-                                            <div key={producto.id} className="p-4 border rounded shadow">
-                                                <h3 className="font-bold">{producto.nombre}</h3>
-                                                <p>Precio: ${producto.precio.toFixed(2)}</p>
-                                                <p>{producto.descripcion}</p>
-                                                <button
-                                                    className="mt-2 p-2 bg-blue-500 text-white rounded"
-                                                    onClick={() => agregarProductoPedido(producto)}
-                                                >
-                                                    Agregar al pedido
-                                                </button>
-                                            </div>
-                                        ))
-                                    ) : (
-                                        <p>No se encontraron productos.</p>
-                                    )}
-                                </div>
-                                {/* <div className="flex flex-col gap-4 max-h-80 overflow-y-auto">
+                <div className="grid grid-cols-2 gap-4">
+                    <div>
+                    <h3 className="font-bold mb-2">Menú</h3>
+                    {/* Algoritmo de busqueda Binaria */}
+                    <input
+                        type="text"
+                        placeholder="Buscar producto por nombre"
+                        value={searchTerm}
+                        onChange={(e) => setSearchTerm(e.target.value)}
+                        className="mt-4 p-2 border rounded w-full"
+                    />
+                    <div className="flex flex-col gap-4 max-h-80 overflow-y-auto mt-4">
+                        {filteredProductos.length > 0 ? (
+                        filteredProductos.map((producto) => (
+                            <div key={producto.id} className="p-4 border rounded shadow hover:bg-gray-100 transition-colors duration-300">
+                            <h3 className="font-bold">{producto.nombre}</h3>
+                            <p>Precio: ${producto.precio.toFixed(2)}</p>
+                            <p>{producto.descripcion}</p>
+                            <button
+                                className="mt-2 p-2 bg-blue-500 text-white rounded hover:bg-blue-600 transition-colors duration-300"
+                                onClick={() => agregarProductoPedido(producto)}
+                            >
+                                Agregar al pedido
+                            </button>
+                            </div>
+                        ))
+                        ) : (
+                        <p>No se encontraron productos.</p>
+                        )}
+                    </div>
+                    {/* <div className="flex flex-col gap-4 max-h-80 overflow-y-auto">
                                     {productos.length > 0 ? (
                                         productos.map((producto) => (
                                             <div key={producto.id} className="p-4 border rounded shadow">
@@ -587,105 +587,105 @@ const MesasView = () => {
                                         <p>No se encontraron productos para esta sede.</p>
                                     )}
                                 </div> */}
-                            </div>
-                            <div className="flex flex-col gap-4 max-h-80 overflow-y-auto">
-                                {pedidoActual ? (
-                                    pedidoActual.detalles.length > 0 ? (
-                                        pedidoActual.detalles.map((detalle, index) => (
-                                            <div key={index} className="p-4 border rounded shadow">
-                                                <p>Producto ID: {detalle.id_producto}</p>
-                                                <p>Cantidad: {detalle.cantidad}</p>
-                                                <p>Subtotal: ${detalle.subtotal.toFixed(2)}</p>
-                                                <button
-                                                    onClick={() => {
-                                                        // Primero, eliminamos el producto de la lista local
-                                                        const nuevosDetalles = pedidoActual.detalles.filter(item => item.id_producto !== detalle.id_producto);
-                                                        const nuevoTotal = nuevosDetalles.reduce((acc, item) => acc + item.subtotal, 0);
-                                                        
-                                                        setPedidoActual({
-                                                            ...pedidoActual,
-                                                            detalles: nuevosDetalles,
-                                                            total: nuevoTotal
-                                                        });
-
-                                                        // Luego, verificamos si hay un pedido y lo eliminamos de la base de datos si es necesario
-                                                        if (pedidoActual && pedidoActual.id) {
-                                                            eliminarProductoDetalle(pedidoActual.id, detalle.id_producto)
-                                                                .catch((error) => {
-                                                                    console.error("Error al eliminar el producto de la base de datos:", error);
-                                                                    alert("No se pudo eliminar el producto de la base de datos.");
-                                                                });
-                                                        } else {
-                                                            alert("El producto se ha eliminado de la lista. No se había registrado en un pedido.");
-                                                        }
-                                                    }}
-                                                >
-                                                    Eliminar
-                                                </button>
-
-                                                <button
-                                                    className="mt-2 ml-2 p-2 bg-yellow-500 text-white rounded"
-                                                    onClick={() => openDetalleModal(index)}
-                                                >
-                                                    Agregar Detalles
-                                                </button>
-
-                                            </div>
-                                        ))
-                                    ) : (
-                                        <p>No hay productos en el pedido.</p>
-                                    )
-                                ) : (
-                                    <p>No hay un pedido abierto.</p>
-                                )}
-                            </div>  
-                        </div>
-                        <div className="mt-4 flex justify-between">
-                            <button
-                                onClick={guardarPedido}
-                                className="bg-green-500 text-white p-2 rounded"
-                            >
-                                Guardar Pedido
-                            </button>
-                            <button
-                            onClick={closeModal}
-                            className="mt-4 p-2 bg-red-500 text-white rounded"
-                        >
-                            Cerrar
-                        </button>
-                        </div>
                     </div>
+                    <div className="flex flex-col gap-4 max-h-80 overflow-y-auto">
+                    {pedidoActual ? (
+                        pedidoActual.detalles.length > 0 ? (
+                        pedidoActual.detalles.map((detalle, index) => (
+                            <div key={index} className="p-4 border rounded shadow hover:bg-gray-100 transition-colors duration-300">
+                            <p>Producto ID: {detalle.id_producto}</p>
+                            <p>Cantidad: {detalle.cantidad}</p>
+                            <p>Subtotal: ${detalle.subtotal.toFixed(2)}</p>
+                            <button
+                                className="mt-2 p-2 bg-red-500 text-white rounded hover:bg-red-600 transition-colors duration-300"
+                                onClick={() => {
+                                // Primero, eliminamos el producto de la lista local
+                                const nuevosDetalles = pedidoActual.detalles.filter(item => item.id_producto !== detalle.id_producto);
+                                const nuevoTotal = nuevosDetalles.reduce((acc, item) => acc + item.subtotal, 0);
+                                
+                                setPedidoActual({
+                                    ...pedidoActual,
+                                    detalles: nuevosDetalles,
+                                    total: nuevoTotal
+                                });
+
+                                // Luego, verificamos si hay un pedido y lo eliminamos de la base de datos si es necesario
+                                if (pedidoActual && pedidoActual.id) {
+                                    eliminarProductoDetalle(pedidoActual.id, detalle.id_producto)
+                                    .catch((error) => {
+                                        console.error("Error al eliminar el producto de la base de datos:", error);
+                                        alert("No se pudo eliminar el producto de la base de datos.");
+                                    });
+                                } else {
+                                    alert("El producto se ha eliminado de la lista. No se había registrado en un pedido.");
+                                }
+                                }}
+                            >
+                                Eliminar
+                            </button>
+
+                            <button
+                                className="mt-2 ml-2 p-2 bg-yellow-500 text-white rounded hover:bg-yellow-600 transition-colors duration-300"
+                                onClick={() => openDetalleModal(index)}
+                            >
+                                Agregar Detalles
+                            </button>
+
+                            </div>
+                        ))
+                        ) : (
+                        <p>No hay productos en el pedido.</p>
+                        )
+                    ) : (
+                        <p>No hay un pedido abierto.</p>
+                    )}
+                    </div>  
                 </div>
+                <div className="mt-4 flex justify-between">
+                    <button
+                    onClick={guardarPedido}
+                    className="bg-green-500 text-white p-2 rounded hover:bg-green-600 transition-colors duration-300"
+                    >
+                    Guardar Pedido
+                    </button>
+                    <button
+                    onClick={closeModal}
+                    className="mt-4 p-2 bg-red-500 text-white rounded hover:bg-red-600 transition-colors duration-300"
+                    >
+                    Cerrar
+                    </button>
+                </div>
+                </div>
+            </div>
             )}
             {isDetalleModalOpen && (
-                <div className="fixed inset-0 flex items-center justify-center z-50 bg-black bg-opacity-50">
-                    <div className="bg-white p-6 rounded shadow-lg max-w-lg w-full">
-                        <h3 className="text-xl font-bold mb-4">Agregar Detalles</h3>
-                        <textarea
-                            className="w-full p-2 border rounded mb-4"
-                            rows="5"
-                            placeholder="Escribe los detalles del producto aquí..."
-                            value={detalleTexto}
-                            onChange={(e) => setDetalleTexto(e.target.value)}
-                        />
-                        <div className="flex justify-end gap-4">
-                            <button
-                                onClick={guardarDetalle}
-                                className="bg-green-500 text-white px-4 py-2 rounded"
-                            >
-                                Guardar
-                            </button>
-                            <button
-                                onClick={closeDetalleModal}
-                                className="bg-red-500 text-white px-4 py-2 rounded"
-                            >
-                                Cancelar
-                            </button>
-                        </div>
-                    </div>
+            <div className="fixed inset-0 flex items-center justify-center z-50 bg-black bg-opacity-50">
+                <div className="bg-white p-6 rounded shadow-lg max-w-lg w-full">
+                <h3 className="text-xl font-bold mb-4">Agregar Detalles</h3>
+                <textarea
+                    className="w-full p-2 border rounded mb-4"
+                    rows="5"
+                    placeholder="Escribe los detalles del producto aquí..."
+                    value={detalleTexto}
+                    onChange={(e) => setDetalleTexto(e.target.value)}
+                />
+                <div className="flex justify-end gap-4">
+                    <button
+                    onClick={guardarDetalle}
+                    className="bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600 transition-colors duration-300"
+                    >
+                    Guardar
+                    </button>
+                    <button
+                    onClick={closeDetalleModal}
+                    className="bg-red-500 text-white px-4 py-2 rounded hover:bg-red-600 transition-colors duration-300"
+                    >
+                    Cancelar
+                    </button>
                 </div>
+                </div>
+            </div>
             )}
-            
         </div>
     );
 };
